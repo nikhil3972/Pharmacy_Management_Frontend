@@ -8,13 +8,15 @@ import { CustomerComponent } from './Components/Customer/customer/customer.compo
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
+import { ProcureComponent } from './Components/Procuree/procure/procure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DashboardComponent,
-    CustomerComponent
+    CustomerComponent,
+    ProcureComponent
   ],
   imports: [
     BrowserModule,
