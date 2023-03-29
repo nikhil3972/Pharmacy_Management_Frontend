@@ -16,7 +16,7 @@ export class ProcureService {
   }
   public deleteData(id:number){
 
-    return this.http.delete("http://localhost:8010/deleteCustomer/"+id);
+    return this.http.delete("http://localhost:8010/deleteManufacturer/"+id);
   }
   public updateData(manufacturer:Seller){
     alert("update");
