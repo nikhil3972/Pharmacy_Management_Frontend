@@ -4,15 +4,15 @@ body {
 fieldset {
     border: thin solid #ccc; 
     border-radius: 4px;
-    padding: 20px;
-    padding-left: 40px;
+    padding: 25px;
+    /* padding-left: 40px; */
     background: #fbfbfb;
 }
 legend {
    color: #678;
 }
 .form-control {
-    width: 95%;
+    width: 100%;
 }
 label small {
     color: #678 !important;
@@ -20,4 +20,10 @@ label small {
 span.req {
     color:maroon;
     font-size: 112%;
+}
+
+@media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
 }

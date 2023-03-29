@@ -48,4 +48,15 @@ export class CustomerComponent {
     });
   }
 
+
+    // public addCustomer(){
+    //   let resp=this.customerService.postMethod(this.Customer);
+    //   resp.subscribe((data)=>
+    //   this.customers=data);
+    //  this.display();
+    //  this.display();
+    // }
+
+
+
 }
