@@ -1,48 +1,52 @@
-<div class="text-center">
-  <button (click)="display()" class="btn btn-success">display</button>
-</div>
+<main style="margin-top: 58px;">
+  <div class="container pt-4">
+    <h2 class="text-center">All Medicines Available</h2>
 
-<div class="container" style="margin-left: 300px; margin-right: 250px;">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Dosage</th>
-        <th>Price</th>
-        <th>Manufacture Date</th>
-        <th>Expiry Date</th>
-        <th>Current Stock</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of medicine; let i = index">
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.dosage }}</td>
-        <td>{{ item.price }}</td>
-        <td>{{ item.manufacture_date }}</td>
-        <td>{{ item.expiry_date }}</td>
-        <td>{{ item.current_stock }}</td>
-        <td>
-          
-          <button class="btn btn-danger">
-            Delete
-          </button>
-        </td>
-        <td>
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Edit
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Dosage</th>
+          <th>Price</th>
+          <th>Manufacture Date</th>
+          <th>Expiry Date</th>
+          <th>Current Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of medicine; let i = index">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.dosage }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.manufacture_date }}</td>
+          <td>{{ item.expiry_date }}</td>
+          <td>{{ item.current_stock }}</td>
+          <td> 
+            <button class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+
+
+
+

@@ -13,13 +13,8 @@ export class DashboardComponent {
   constructor(private medicineService : MedicineService){}
 
   ngOnInit(){
-
-  }
-
-  display(){
     this.medicine = this.medicineService.getMedicine().subscribe(data => 
       this.medicine = data);
       return this.medicine;
   }
-
 }
