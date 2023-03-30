@@ -1,0 +1,16 @@
+h2{
+    text-align: center;
+    margin: 10px;
+    background-color: blanchedalmond;
+}
+
+.sales-item{
+    align-items: end;
+}
+
+@media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+  
