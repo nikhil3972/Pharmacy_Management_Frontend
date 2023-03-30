@@ -10,11 +10,8 @@ import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
 import { LoginComponent } from './Components/Login/login/login.component';
-<<<<<<< HEAD
 import { DiseaseComponent } from './Components/disease/disease.component';
-=======
 import { SalesComponent } from './Components/Sales/sales.component';
->>>>>>> c35cb6944db41554e25ec98023480ecabe8c13ec
 
 @NgModule({
   declarations: [
@@ -24,12 +21,8 @@ import { SalesComponent } from './Components/Sales/sales.component';
     CustomerComponent,
     ProcureComponent,
     LoginComponent,
-<<<<<<< HEAD
-    DiseaseComponent
-=======
+    DiseaseComponent,
     SalesComponent
-
->>>>>>> c35cb6944db41554e25ec98023480ecabe8c13ec
   ],
   imports: [
     BrowserModule,

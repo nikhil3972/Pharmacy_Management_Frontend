@@ -1,18 +1,35 @@
 <main style="margin-top: 58px">
   <div class="container pt-4">
+
+    <h3>Search Customer</h3>
+    <form class="d-none d-md-flex input-group w-auto my-auto">
+      <input
+        autocomplete="off"
+        type="search"
+        class="form-control rounded"
+        placeholder='Search (ctrl + "/" to focus)'
+        [ngModel]="searchId"
+      />
+      <i class="fas fa-search"></i>
+      <br />
+      <button class="btn btn-success" (click)="getCustomerById(searchId)">
+        Search
+      </button>
+    </form>
+    <br /><br />
+    
     <div class="row">
-      <div class="col-md-12"> 
-     
-       
+      <div class="col-md-12">
         <form>
           <fieldset>
-           
             <div class="form-group">
-              <label for="Name"><span class="req">* </span> Medicine Id: </label>
+              <label for="Name"
+                ><span class="req">* </span> Medicine Id:
+              </label>
               <input
                 required
                 type="text"
-                [(ngModel)]=" MedicineDemo.id"
+                [(ngModel)]="MedicineDemo.id"
                 name="name"
                 id="medicineId"
                 class="form-control phone"
@@ -92,16 +109,7 @@
         </form>
       </div>
     </div>
-<br><br>
-<h3>Search Customer</h3>
-<form class="d-none d-md-flex input-group w-auto my-auto" >
-  <input autocomplete="off" type="search" class="form-control rounded" 
-    placeholder='Search (ctrl + "/" to focus)' [ngModel]="searchId" />
-<i class="fas fa-search" ></i>
-<br>
-<button class="btn btn-success" (click)="getCustomerById(searchId)">Search</button>
-</form>
-<br><br>
+    <br /><br />
 
     <div class="py-4 text-center">
       <button (click)="display()" class="btn btn-dark">display</button>
@@ -110,27 +118,21 @@
     <table class="table table-striped text-center">
       <thead>
         <tr>
-        
           <th>Id</th>
           <th>FirstName</th>
           <th>LastName</th>
           <th>Email</th>
           <th>Contact Number</th>
-         
         </tr>
       </thead>
       <tbody>
-       
-        
-        <tr *ngFor= "let item of customers;">
-         
+        <tr *ngFor="let item of customers">
           <td>{{ item.id }}</td>
           <td>{{ item.firstName }}</td>
           <td>{{ item.lastName }}</td>
           <td>{{ item.email }}</td>
           <td>{{ item.contact }}</td>
-          
-        
+
           <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
               Delete
@@ -282,10 +284,9 @@
               </div>
             </div>
           </div>
-     
         </tr>
-        
-      <!-- </div> -->
+
+        <!-- </div> -->
       </tbody>
     </table>
   </div>

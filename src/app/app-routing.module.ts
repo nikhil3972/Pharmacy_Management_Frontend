@@ -12,11 +12,8 @@ const routes: Routes = [
   {path : 'dashboard', component : DashboardComponent},
   {path : 'customer', component : CustomerComponent},
   {path: 'procure', component:ProcureComponent},
-<<<<<<< HEAD
   {path: 'disease', component:DiseaseComponent},
-=======
   {path: 'selling-system', component: SalesComponent}
->>>>>>> c35cb6944db41554e25ec98023480ecabe8c13ec
 ];
 
 @NgModule({
