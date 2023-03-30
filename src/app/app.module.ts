@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
+import { CommonModule } from '@angular/common';
+import { SalesComponent } from './Components/Sales/sales.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { ProcureComponent } from './Components/Procuree/procure/procure.componen
     NavbarComponent,
     DashboardComponent,
     CustomerComponent,
-    ProcureComponent
+    ProcureComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
