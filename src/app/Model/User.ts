@@ -1,9 +1,10 @@
 export class User{
+    medicineId!:number
     id!:number;
     firstName!:string;
     lastName!:string;
     email!:string;
     contact!:number;
     name!:string;
-     constructor(id:number,firstName:string,lastName:string,email:string,contact:number){}
+     constructor(medicineId:number,id:number,firstName:string,lastName:string,email:string,contact:number){}
  }

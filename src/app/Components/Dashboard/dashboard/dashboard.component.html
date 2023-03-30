@@ -26,7 +26,7 @@
           <td>{{ item.expiry_date }}</td>
           <td>{{ item.current_stock }}</td>
           <td> 
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" (click)="  deleteMedicineData(item)">
               Delete
             </button>
           </td>
@@ -40,6 +40,126 @@
               Edit
             </button>
           </td>
+          <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Modal title
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <fieldset>
+                    <div class="form-group">
+                      <label for="id"><span class="req">* </span> Id: </label>
+                      <input
+                        required
+                        type="text"
+                        name="id"
+                        id="id"
+                        class="form-control phone"
+                        maxlength="28"
+                        value="{{ item.id }}"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Name"
+                        ><span class="req">* </span> FirstName:
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        id="name"
+                        [ngModel]="medicine.name"
+                        class="form-control phone"
+                        maxlength="28"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName"
+                        ><span class="req">* </span> LastName:
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        id="lastname"
+                        [ngModel]="medicine.description"
+                        class="form-control phone"
+                        maxlength="28"
+                        value="{{ item.description }}"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="firstname"
+                        ><span class="req">* </span> Email:
+                      </label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="email"
+                        id="txt"
+                        [ngModel]="medicine.dosage"
+                        required
+                        value="{{ item.dosage }}"
+                      />
+                      <div id="errFirst"></div>
+                    </div>
+                   
+
+                    <div class="form-group">
+                      <label for="contact"
+                        ><span class="req">* </span>Contact Number:
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        name="contact"
+                        id="contact"
+                        [ngModel]="medicine.price"
+                        class="form-control phone"
+                        maxlength="28"
+                        value="{{ item.price }}"
+                      />
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         </tr>
       </tbody>
     </table>

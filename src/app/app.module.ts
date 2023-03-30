@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './Components/Customer/customer/customer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
+import { LoginComponent } from './Components/Login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { ProcureComponent } from './Components/Procuree/procure/procure.componen
     NavbarComponent,
     DashboardComponent,
     CustomerComponent,
-    ProcureComponent
+    ProcureComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

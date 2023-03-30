@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Medicine } from 'src/app/Model/Medicine';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 
 @Component({
@@ -16,5 +17,12 @@ export class DashboardComponent {
     this.medicine = this.medicineService.getMedicine().subscribe(data => 
       this.medicine = data);
       return this.medicine;
+  }
+  deleteMedicineData(item:  Medicine){
+    this.medicineService.deleteMedicine(item.id).subscribe((resp) => {
+      console.log(resp);
+    });
+   
+
   }
 }
