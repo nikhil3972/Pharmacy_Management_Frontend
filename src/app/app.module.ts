@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './Components/Customer/customer/customer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
+import { LoginComponent } from './Components/Login/login/login.component';
 import { CommonModule } from '@angular/common';
 import { SalesComponent } from './Components/Sales/sales.component';
 
@@ -18,15 +19,13 @@ import { SalesComponent } from './Components/Sales/sales.component';
     NavbarComponent,
     DashboardComponent,
     CustomerComponent,
-    ProcureComponent,
-    SalesComponent
+    ProcureComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    CommonModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

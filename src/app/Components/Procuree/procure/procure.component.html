@@ -1,118 +1,193 @@
-<main style="margin-top: 58px;">
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <fieldset>
-                    <div class="form-group">
-                        <label for="id"><span class="req">* </span> Id: </label>
-                        <input required type="text" [(ngModel)]=" Manufacturer.id" name="id" id="id"
-                            class="form-control phone" maxlength="28" placeholder="Enter your id..." />
-                    </div>
+<main style="margin-top: 58px">
+  <div class="container">
+    <div class="row pt-4">
+      <div class="col-md-12">
+        <form>
+          <fieldset>
+            <div class="form-group">
+              <label for="id"><span class="req">* </span> Id: </label>
+              <input
+                required
+                type="text"
+                [(ngModel)]="Manufacturer.id"
+                name="id"
+                id="id"
+                class="form-control phone"
+                maxlength="28"
+                placeholder="Enter your id..."
+              />
+            </div>
 
-                    <div class="form-group">
-                        <label for="Name"><span class="req">* </span> Name: </label>
-                        <input required type="text" [(ngModel)]=" Manufacturer.name" name="name" id="name"
-                            class="form-control phone" maxlength="28" placeholder="Enter your firstname..." />
-                    </div>
-                    <div class="form-group">
-                      <label for="contact"><span class="req">* </span>Contact Number: </label>
-                      <input required type="text" [(ngModel)]=" Manufacturer.contact" name="contact" id="contact"
-                          class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
-                  </div>
-
-
-
-
-
-
-                    <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
-                            (click)="addManufacturer()">
-                    </div>
-                </fieldset>
-            </form><!-- ends register form -->
-            <!-- second for to fiter user-->
-        </div><!-- ends col-6 -->
-
+            <div class="form-group">
+              <label for="Name"><span class="req">* </span> Name: </label>
+              <input
+                required
+                type="text"
+                [(ngModel)]="Manufacturer.name"
+                name="name"
+                id="name"
+                class="form-control phone"
+                maxlength="28"
+                placeholder="Enter your firstname..."
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact"
+                ><span class="req">* </span>Contact Number:
+              </label>
+              <input
+                required
+                type="text"
+                [(ngModel)]="Manufacturer.contact"
+                name="contact"
+                id="contact"
+                class="form-control phone"
+                maxlength="28"
+                placeholder="Enter your Phone number.."
+              />
+            </div>
+            <div class="form-group mt-3 text-center">
+              <input
+                class="btn btn-success"
+                type="submit"
+                name="submit_reg"
+                value="Register"
+                (click)="addManufacturer()"
+              />
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 
+  <div class="py-4 text-center">
+    <button (click)="displayManufacturers()" class="btn btn-dark">
+      display
+    </button>
+  </div>
 
-<div class="text-center">
-    <button (click)="displayManufacturers()" class="btn btn-success">display</button>
-</div>
-
-<div class="container">
+  <div class="container">
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Contact Number</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of manufacturers; let i = index">
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.contact}}</td>
-                <td><button class="btn btn-danger"(click)="deleteData(item)">Delete</button></td>
-                <!-- <td><button (click)="  updateCustomer(item)">Edit</button></td> -->
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Contact Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of manufacturers; let i = index">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.contact }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteData(item)">
+              Delete
+            </button>
+          </td>
+          <!-- <td><button (click)="  updateCustomer(item)">Edit</button></td> -->
 
-                <!-- Button trigger modal -->
-                <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    Edit
-                </button>
-            </td>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label for="id"><span class="req">* </span> Id: </label>
-                                            <input required type="text"  name="id" id="id"
-                                                class="form-control phone" maxlength="28" value={{item.id}}/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="Name"><span class="req">* </span> Name: </label>
-                                            <input required type="text"  name="name" id="name" [ngModel]="Manufacturer.name"
-                                                class="form-control phone" maxlength="28" />
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="contact"><span class="req">* </span>Contact Number: </label>
-                                            <input required type="text"  name="contact" id="contact" [ngModel]="Manufacturer.contact"
-                                                class="form-control phone" maxlength="28" value={{item.contact}}/>
-                                        </div>
-
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" (click)="updateManufacturer(item)">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Edit
+            </button>
+          </td>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Modal title
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
+                <div class="modal-body">
+                  <form>
+                    <fieldset>
+                      <div class="form-group">
+                        <label for="id"><span class="req">* </span> Id: </label>
+                        <input
+                          required
+                          type="text"
+                          name="id"
+                          id="id"
+                          class="form-control phone"
+                          maxlength="28"
+                          value="{{ item.id }}"
+                        />
+                      </div>
 
-            </tr>
-        </tbody>
+                      <div class="form-group">
+                        <label for="Name"
+                          ><span class="req">* </span> Name:
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          name="name"
+                          id="name"
+                          [ngModel]="Manufacturer.name"
+                          class="form-control phone"
+                          maxlength="28"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="contact"
+                          ><span class="req">* </span>Contact Number:
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          name="contact"
+                          id="contact"
+                          [ngModel]="Manufacturer.contact"
+                          class="form-control phone"
+                          maxlength="28"
+                          value="{{ item.contact }}"
+                        />
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="updateManufacturer(item)"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+      </tbody>
     </table>
-</div>
+  </div>
 </main>
