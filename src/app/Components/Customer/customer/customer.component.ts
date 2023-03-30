@@ -12,6 +12,7 @@ import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 export class CustomerComponent {
   customers!: any;
   medicine!:any;
+  searchId!:number;
 
   Customer: User = new User(0,50, '', '', '', 0);
   MedicineDemo:Medicine=new Medicine(0,"","","",0,new Date("Fri Dec 08 2019 "),new Date("Fri Dec 08 2019 "),0);
@@ -27,6 +28,14 @@ export class CustomerComponent {
     
   }
  
+  public getCustomerById(searchId:number){
+    this.customerService.deleteData(searchId).subscribe((resp) => {
+      console.log(resp);
+    });
+    this.display();
+    this.display();
+
+  }
 public getMedicineData(){
   this.medicine=this.medicineService.getMedicine().subscribe((data) => (this.medicine=data));
 
@@ -53,13 +62,7 @@ public getMedicineData(){
   }
 
 
-    // public addCustomer(){
-    //   let resp=this.customerService.postMethod(this.Customer);
-    //   resp.subscribe((data)=>
-    //   this.customers=data);
-    //  this.display();
-    //  this.display();
-    // }
+   
 
 
 

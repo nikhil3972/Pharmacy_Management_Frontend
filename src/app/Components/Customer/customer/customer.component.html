@@ -1,7 +1,9 @@
 <main style="margin-top: 58px">
   <div class="container pt-4">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12"> 
+     
+       
         <form>
           <fieldset>
            
@@ -90,7 +92,16 @@
         </form>
       </div>
     </div>
-
+<br><br>
+<h3>Search Customer</h3>
+<form class="d-none d-md-flex input-group w-auto my-auto" >
+  <input autocomplete="off" type="search" class="form-control rounded" 
+    placeholder='Search (ctrl + "/" to focus)' [ngModel]="searchId" />
+<i class="fas fa-search" ></i>
+<br>
+<button class="btn btn-success" (click)="getCustomerById(searchId)">Search</button>
+</form>
+<br><br>
     <div class="py-4 text-center">
       <button (click)="display()" class="btn btn-dark">display</button>
     </div>

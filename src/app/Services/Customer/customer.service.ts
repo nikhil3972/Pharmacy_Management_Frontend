@@ -22,5 +22,8 @@ export class CustomerService {
     alert("update");
     return this.http.put("localhost:8010/updateCustomer",user);
   }
+  public getCustomerById(id:number){
+    return this.http.get("http://localhost:8010/getCustomerById/"+id);
+  }
  
 }
