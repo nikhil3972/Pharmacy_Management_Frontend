@@ -10,7 +10,6 @@ import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
 import { LoginComponent } from './Components/Login/login/login.component';
-import { CommonModule } from '@angular/common';
 import { SalesComponent } from './Components/Sales/sales.component';
 
 @NgModule({
@@ -19,13 +18,18 @@ import { SalesComponent } from './Components/Sales/sales.component';
     NavbarComponent,
     DashboardComponent,
     CustomerComponent,
-    ProcureComponent
+    ProcureComponent,
+    LoginComponent,
+    SalesComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
