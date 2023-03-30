@@ -13,6 +13,8 @@ const routes: Routes = [
   {path : 'customer', component : CustomerComponent},
   {path: 'procure', component:ProcureComponent},
   {path: 'disease', component:DiseaseComponent},
+  {path: 'selling-system', component: SalesComponent},
+  {path: 'disease', component:DiseaseComponent},
   {path: 'selling-system', component: SalesComponent}
 ];
 
