@@ -10,7 +10,11 @@ import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
 import { LoginComponent } from './Components/Login/login/login.component';
+
 import { DiseaseComponent } from './Components/disease/disease.component';
+
+import { SalesComponent } from './Components/Sales/sales.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +24,19 @@ import { DiseaseComponent } from './Components/disease/disease.component';
     CustomerComponent,
     ProcureComponent,
     LoginComponent,
-    DiseaseComponent
+
+    DiseaseComponent,
+
+    SalesComponent
+
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

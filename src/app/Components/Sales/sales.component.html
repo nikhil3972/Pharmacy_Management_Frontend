@@ -1,0 +1,37 @@
+<main style="margin-top: 58px;">
+
+    <div class="text-center">
+        <button (click)="displaySales()" class="btn btn-success">display</button>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Total_Cost</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of sales;">
+                    <td>{{item.id}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{item.total_cost}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteRecord(item.id)">Delete</button></td>
+                    <!-- <td><button (click)="  updateCustomer(item)">Edit</button></td> -->
+
+                    <!-- Button trigger modal -->
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
