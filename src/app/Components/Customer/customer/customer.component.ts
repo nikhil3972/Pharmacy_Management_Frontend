@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/Model/User';
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
+import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 
 @Component({
   selector: 'app-customer',
@@ -11,13 +12,18 @@ export class CustomerComponent {
   customers!: any;
 
   Customer: User = new User(50, '', '', '', 0);
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService,private medicineService:MedicineService) {}
   ngOnInit() {}
   display() {
     this.customers = this.customerService
       .getCustomers()
       .subscribe((data) => (this.customers = data));
+      this.customers = this.medicineService
+      .getMedicine()
+      .subscribe((data) => (this.customers = data));
     return this.customers;
+
+    
   }
   // public addCustomer(){
   //   let resp=this.customerService.postMethod(this.Customer);

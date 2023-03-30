@@ -3,6 +3,7 @@ export class User{
     firstName!:string;
     lastName!:string;
     email!:string;
-    contact!:number
+    contact!:number;
+    name!:string;
      constructor(id:number,firstName:string,lastName:string,email:string,contact:number){}
  }

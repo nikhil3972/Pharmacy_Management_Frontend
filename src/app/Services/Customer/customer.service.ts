@@ -22,4 +22,5 @@ export class CustomerService {
     alert("update");
     return this.http.put("localhost:8010/updateCustomer",user);
   }
+ 
 }
