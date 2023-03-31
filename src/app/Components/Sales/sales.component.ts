@@ -30,6 +30,13 @@ export class SalesComponent implements OnInit{
     )
     this.displaySales();
   }
+  public addSales = async () => {
+    let resp = await this.service.postMethod(this.sales);
+    resp.subscribe((data) => (this.sales = data));
+
+    this.displaySales();
+    this.displaySales();
+  };
 
 
   

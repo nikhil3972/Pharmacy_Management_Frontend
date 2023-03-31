@@ -13,4 +13,9 @@ h2{
       padding-left: 240px;
     }
   }
+
+  .container{
+    border-width: 1em;
+    margin: 20px;
+  }
   

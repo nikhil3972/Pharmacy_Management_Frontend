@@ -1,8 +1,74 @@
 <main style="margin-top: 58px;">
 
-    <div class="text-center">
-        <button (click)="displaySales()" class="btn btn-success">display</button>
-    </div>
+        <div class="container border solid black ">
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <form>
+                <fieldset>
+                  <div class="form-group">
+                    <label for="id"><span class="req">* </span> Id: </label>
+                    <input
+                      required
+                      type="text"
+                      [(ngModel)]="sales.id"
+                      name="id"
+                      id="id"
+                      class="form-control phone"
+                      maxlength="28"
+                      placeholder="Enter your id..."
+                    />
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="Name"><span class="req">* </span> Date: </label>
+                    <input
+                      required
+                      type="text"
+                      [(ngModel)]="sales.date"
+                      name="name"
+                      id="name"
+                      class="form-control phone"
+                      maxlength="28"
+                      placeholder="Enter date (yyyy-dd-mm).."
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact"
+                      ><span class="req">* </span>Total Cost:
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      [(ngModel)]="sales.total_cost"
+                      name="contact"
+                      id="contact"
+                      class="form-control phone"
+                      maxlength="28"
+                      placeholder="Enter total cost.."
+                    />
+                  </div>
+                  <div class="form-group mt-3 text-center">
+                    <input
+                      class="btn btn-success"
+                      type="submit"
+                      name="submit_reg"
+                      value="Register"
+                      (click)="addSales()"
+                    />
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
 
     <div class="container">
         <table class="table table-striped">
@@ -20,18 +86,13 @@
                     <td>{{item.date}}</td>
                     <td>{{item.total_cost}}</td>
                     <td><button class="btn btn-danger" (click)="deleteRecord(item.id)">Delete</button></td>
-                    <!-- <td><button (click)="  updateCustomer(item)">Edit</button></td> -->
-
-                    <!-- Button trigger modal -->
-                    <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Edit
-                        </button>
-                    </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="text-center">
+        <button (click)="displaySales()" class="btn btn-success">display</button>
     </div>
 
 </main>
