@@ -1,21 +1,28 @@
-h2{
-    text-align: center;
-    margin: 10px;
-    background-color: blanchedalmond;
+h2 {
+  text-align: center;
+  margin: 10px;
+  background-color: blanchedalmond;
 }
 
-.sales-item{
-    align-items: end;
+.sales-item {
+  align-items: end;
 }
 
 @media (min-width: 991.98px) {
-    main {
-      padding-left: 240px;
-    }
+  main {
+    padding-left: 240px;
   }
+}
 
-  .container{
-    border-width: 1em;
-    margin: 20px;
-  }
-  
+.container {
+  border-width: 1em;
+  margin: 20px;
+
+  margin-bottom: 30px;
+}
+
+.text-center-display {
+  display: flex;
+  justify-content: center;
+  margin-left: 48px
+}

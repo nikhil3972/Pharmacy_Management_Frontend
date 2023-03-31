@@ -10,12 +10,12 @@ import { SalesService } from 'src/app/Services/Sales/sales.service';
 export class SalesComponent implements OnInit{
   sales!:any
 
+  sale:Sales =new Sales(0,"",0);
   constructor(private service:SalesService){}
-   
+  
 
 
   ngOnInit() {
-    this.sales= this.service.getSales().subscribe(data=> this.sales=data);
   }
   displaySales(){
     this.sales=this.service.getSales().subscribe(data=>
@@ -30,15 +30,12 @@ export class SalesComponent implements OnInit{
     )
     this.displaySales();
   }
-  public addSales = async () => {
-    let resp = await this.service.postMethod(this.sales);
+
+  addSales(){
+    let resp = this.service.postMethod(this.sale);
     resp.subscribe((data) => (this.sales = data));
 
     this.displaySales();
     this.displaySales();
-  };
-
-
-  
-
+  }
 }

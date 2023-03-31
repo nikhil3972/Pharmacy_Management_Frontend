@@ -12,21 +12,21 @@ import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 })
 export class CustomerComponent {
 
-  bCus : boolean = true;
-  bMed : boolean = false;
+  bCus: boolean = true;
+  bMed: boolean = false;
 
   customers!: any;
-  medicine!:any;
-  searchId!:number;
+  medicine!: any;
+  searchId!: number;
 
-  customerMedicine ! : any;
+  customerMedicine !: any;
 
-  Customer: User = new User(0,50, '', '', '', 0);
-  Medicine:Medicine=new Medicine(0,"","","",0,new Date("Fri Dec 08 2019 "),new Date("Fri Dec 08 2019 "),0);
+  Customer: User = new User(0, 50, '', '', '', 0);
+  Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
 
-  CustomerMedicine : CustomerMedicine = new CustomerMedicine(0,"","","","","",10.05);
-  constructor(private customerService: CustomerService,private medicineService:MedicineService) {}
-  ngOnInit() {}
+  CustomerMedicine: CustomerMedicine = new CustomerMedicine(0, "", "", "", "", "", 10.05);
+  constructor(private customerService: CustomerService, private medicineService: MedicineService) { }
+  ngOnInit() { }
   display() {
     // this.customers = this.customerService
     //   .getCustomers()
@@ -44,8 +44,8 @@ export class CustomerComponent {
     this.display();
     this.display();
   };
- 
-  public getCustomerById(searchId:number){
+
+  public getCustomerById(searchId: number) {
     this.customerService.deleteData(searchId).subscribe((resp) => {
       console.log(resp);
     });
@@ -74,12 +74,12 @@ export class CustomerComponent {
     });
   }
 
-  
 
-  public getMedicineData(){
-    this.medicine=this.medicineService.getMedicine().subscribe((data) => (this.medicine=data));  
+
+  public getMedicineData() {
+    this.medicine = this.medicineService.getMedicine().subscribe((data) => (this.medicine = data));
   }
-   
+
   public addMedicine = async () => {
     this.bCus = false;
     let resp = await this.medicineService.postMethod(this.Medicine);
@@ -88,6 +88,6 @@ export class CustomerComponent {
     // this.display();
   };
 
- 
+
 
 }

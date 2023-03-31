@@ -29,7 +29,7 @@ import { SalesComponent } from './Components/Sales/sales.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule,  
     ReactiveFormsModule
   ],
   providers: [],
