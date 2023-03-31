@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CustomerMedicine } from 'src/app/Model/CustomerMedicine';
 import { User } from 'src/app/Model/User';
 
 @Injectable({
@@ -26,4 +27,10 @@ export class CustomerService {
     return this.http.get("http://localhost:8010/getCustomerById/"+id);
   }
  
+  public getCustomerWithMedicine(){
+    return this.http.get("http://localhost:8010/getMedicineWithCustomer");
+  }
+  public postCustomerWithMedicine(user: CustomerMedicine){
+    return this.http.post("http://localhost:8010/insertCustomer",user,{responseType:'text'as 'json'});
+  }
 }

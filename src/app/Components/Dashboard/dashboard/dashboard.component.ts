@@ -20,9 +20,8 @@ export class DashboardComponent {
   }
   deleteMedicineData(item:  Medicine){
     this.medicineService.deleteMedicine(item.id).subscribe((resp) => {
-      console.log(resp);
     });
-   
-
+   this.ngOnInit();
+   this.ngOnInit();
   }
 }
