@@ -5,12 +5,15 @@ import { User } from 'src/app/Model/User';
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent {
+
+  
 
   bCus: boolean = true;
   bMed: boolean = false;
@@ -21,11 +24,16 @@ export class CustomerComponent {
 
   customerMedicine !: any;
 
+  searchTerm!: string;
+  users!: any[];
+
   Customer: User = new User(0, 50, '', '', '', 0);
   Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
 
   CustomerMedicine: CustomerMedicine = new CustomerMedicine(0, "", "", "", "", "", 10.05);
   constructor(private customerService: CustomerService, private medicineService: MedicineService) { }
+
+
   ngOnInit() { }
   display() {
     // this.customers = this.customerService

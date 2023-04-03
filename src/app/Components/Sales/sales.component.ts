@@ -38,4 +38,10 @@ export class SalesComponent implements OnInit{
     this.displaySales();
     this.displaySales();
   }
+
+  updateSales(user: Sales) {
+    this.service.updateData(user).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

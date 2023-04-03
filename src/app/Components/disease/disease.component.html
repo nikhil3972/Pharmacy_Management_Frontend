@@ -67,7 +67,7 @@
           </form>
         </div>
       </div>
-
+    </div>
 
 
 
@@ -80,143 +80,143 @@
         <button (click)="display()" class="btn btn-dark">display</button>
       </div>
   
-      <table class="table table-striped text-center">
-        <thead>
-          <tr>
-          
-            <th>Id</th>
-            <th>Disease Name</th>
-            <th>Disease Info</th>
-           
-           
-          </tr>
-        </thead>
-        <tbody>
-         
-          
-          <tr *ngFor= "let item of diseases;">
-           
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.info }}</td>
-        
+      <div class="container">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
             
-          
-            <td>
-              <button class="btn btn-danger"  (click)="deleteDisease(item)">
-                Delete
-              </button>
-            </td>
+              <th>Id</th>
+              <th>Disease Name</th>
+              <th>Disease Info</th>
+             <th>Action</th>
+             
+            </tr>
+          </thead>
+          <tbody>
            
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+            
+            <tr *ngFor= "let item of diseases;">
+             
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.info }}</td>
+          
+              
+            
+              <td>
+                <button class="btn btn-danger"  (click)="deleteDisease(item)">
+                  Delete
+                </button>
+              </td>
+             
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Edit
+                </button>
+              </td>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
               >
-                Edit
-              </button>
-            </td>
-            <!-- Modal -->
-            <div
-              class="modal fade"
-              id="exampleModal"
-              tabindex="-1"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      Modal title
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <fieldset>
-                        <div class="form-group">
-                          <label for="id"><span class="req">* </span> Id: </label>
-                          <input
-                            required
-                            type="text"
-                            name="id"
-                            id="id"
-                            class="form-control phone"
-                            maxlength="28"
-                            value="{{ item.id }}"
-                          />
-                        </div>
-  
-                        <div class="form-group">
-                          <label for="Name"
-                            ><span class="req">* </span> Name:
-                          </label>
-                          <input
-                            required
-                            type="text"
-                            name="name"
-                            id="name"
-                            [ngModel]="disease.name"
-                            class="form-control phone"
-                            maxlength="28"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <label for="lastName"
-                            ><span class="req">* </span>Info:
-                          </label>
-                          <input
-                            required
-                            type="text"
-                            name="name"
-                            id="lastname"
-                            [ngModel]="disease.info"
-                            class="form-control phone"
-                            maxlength="28"
-                            value="{{ item.info }}"
-                          />
-                        </div>
-  
-                      
-                       
-  
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Modal title
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <fieldset>
+                          <div class="form-group">
+                            <label for="id"><span class="req">* </span> Id: </label>
+                            <input
+                              required
+                              type="text"
+                              name="id"
+                              id="id"
+                              class="form-control phone"
+                              maxlength="28"
+                              value="{{ item.id }}"
+                            />
+                          </div>
+    
+                          <div class="form-group">
+                            <label for="Name"
+                              ><span class="req">* </span> Name:
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="name"
+                              id="name"
+                              [ngModel]="disease.name"
+                              class="form-control phone"
+                              maxlength="28"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="lastName"
+                              ><span class="req">* </span>Info:
+                            </label>
+                            <input
+                              required
+                              type="text"
+                              name="name"
+                              id="lastname"
+                              [ngModel]="disease.info"
+                              class="form-control phone"
+                              maxlength="28"
+                              value="{{ item.info }}"
+                            />
+                          </div>
+    
                         
-                      </fieldset>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      
-                    >
-                      Save changes
-                    </button>
+                         
+    
+                          
+                        </fieldset>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        
+                      >
+                        Save changes
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-       
-          </tr>
-          
-        <!-- </div> -->
-        </tbody>
-      </table>
-    </div>
+         
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
   </main>
   
