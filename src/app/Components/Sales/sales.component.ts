@@ -10,9 +10,9 @@ import { SalesService } from 'src/app/Services/Sales/sales.service';
 export class SalesComponent implements OnInit{
   sales!:any
 
-  sale:Sales =new Sales(0,"",0);
+  sale:Sales =new Sales(0,"","",0);
   constructor(private service:SalesService){}
-  
+
 
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class SalesComponent implements OnInit{
   deleteRecord(id:number){
     this.service.deleteData(id).subscribe(
       (resp)=>{
-        console.log(resp); 
+        console.log(resp);
       }
     )
     this.displaySales();

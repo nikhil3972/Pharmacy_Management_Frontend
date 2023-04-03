@@ -22,6 +22,16 @@
               <input required type="text" [(ngModel)]="Manufacturer.contact" name="contact" id="contact"
                 class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
             </div>
+            <div class="form-group">
+              <label for="Name"><span class="req">* </span> Medicine ID:: </label>
+              <input required type="text" [(ngModel)]="ProcureMedicines.id" name="name" id="name"
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine ID..." />
+            </div>
+            <div class="form-group">
+              <label for="Name"><span class="req">* </span> Medicine Name: </label>
+              <input required type="text" [(ngModel)]="ProcureMedicines.medname" name="name" id="name"
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine ID..." />
+            </div>
             <div class="form-group mt-3 text-center">
               <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
                 (click)="addManufacturer()" />
@@ -45,14 +55,18 @@
           <th>Id</th>
           <th>Name</th>
           <th>Contact Number</th>
+          <th>Medicine ID</th>
+          <th>Medicine Name</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of manufacturers; let i = index">
+        <tr *ngFor="let item of procuremedicine; let i = index">
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.contact }}</td>
+          <td>{{ item.medid }}</td>
+          <td>{{ item.medname }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
               Delete
