@@ -36,14 +36,8 @@ export class CustomerComponent {
 
   ngOnInit() { }
   display() {
-    // this.customers = this.customerService
-    //   .getCustomers()
-    //   .subscribe((data) => (this.customers = data));     
-    // return this.customers;
-
     this.customerMedicine = this.customerService.getCustomerWithMedicine().subscribe((data) => this.customerMedicine = data);
     return this.customerMedicine;
-
   }
 
   public addCustomerWithMedicine = async () => {
@@ -63,10 +57,6 @@ export class CustomerComponent {
 
   public addCustomer = async () => {
     this.bCus = false;
-    // let resp = await this.customerService.postMethod(this.Customer);
-    // resp.subscribe((data) => (this.customers = data));
-    // this.display();
-    // this.display();
   };
   deleteData(item: User) {
     this.customerService.deleteData(item.id).subscribe((resp) => {
@@ -92,8 +82,6 @@ export class CustomerComponent {
     this.bCus = false;
     let resp = await this.medicineService.postMethod(this.Medicine);
     resp.subscribe((data) => (this.customers = data));
-    // this.display();
-    // this.display();
   };
 
 
