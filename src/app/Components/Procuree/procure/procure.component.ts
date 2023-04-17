@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Seller } from 'src/app/Model/Seller';
 import { ProcureService } from 'src/app/Services/Procure/procure.service';
+import { ProcureMedicine } from 'src/app/Model/ProcureMedicine';
 
 @Component({
   selector: 'app-procure',
@@ -9,6 +10,8 @@ import { ProcureService } from 'src/app/Services/Procure/procure.service';
 })
 export class ProcureComponent {
   manufacturers!:any;
+  procuremedicine!:any;
+  ProcureMedicines:ProcureMedicine = new ProcureMedicine(1,"","",2,"");
   Manufacturer:Seller=new Seller(50,"",0);
   constructor(private procureService:ProcureService){}
   ngOnInit(){
