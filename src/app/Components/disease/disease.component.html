@@ -6,19 +6,7 @@
           <form>
             <fieldset>
              
-              <div class="form-group">
-                <label for="Name"><span class="req">* </span>Disease Id: </label>
-                <input
-                  required
-                  type="text"
-                  [(ngModel)]=" disease.id"
-                  name="name"
-                  id="diseaseId"
-                  class="form-control phone"
-                  maxlength="28"
-                  placeholder="Disease Id..."
-                />
-              </div>
+              
   
               <div class="form-group">
                 <label for="Name"><span class="req">* </span>Disease Name: </label>
@@ -131,7 +119,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Modal title
+                        Edit Disease entry
                       </h5>
                       <button
                         type="button"
@@ -143,18 +131,7 @@
                     <div class="modal-body">
                       <form>
                         <fieldset>
-                          <div class="form-group">
-                            <label for="id"><span class="req">* </span> Id: </label>
-                            <input
-                              required
-                              type="text"
-                              name="id"
-                              id="id"
-                              class="form-control phone"
-                              maxlength="28"
-                              value="{{ item.id }}"
-                            />
-                          </div>
+                          
     
                           <div class="form-group">
                             <label for="Name"
