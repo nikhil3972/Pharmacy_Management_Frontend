@@ -95,3 +95,8 @@ span.req {
       margin-bottom: 25px;
   
   }}
+  h2 {
+    text-align: center;
+    margin: 10px;
+    background-color: blanchedalmond;
+  }

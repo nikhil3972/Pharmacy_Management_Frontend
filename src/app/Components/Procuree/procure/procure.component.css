@@ -128,3 +128,8 @@ input[type="submit"]:hover {
     padding-left: 240px;
   }
 }
+h2 {
+  text-align: center;
+  margin: 10px;
+  background-color: blanchedalmond;
+}
