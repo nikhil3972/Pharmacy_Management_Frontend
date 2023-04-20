@@ -1,14 +1,6 @@
-# Stage 1
-FROM node:latest as node
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build --prod
+FROM nginx:latest
+COPY /dist/client /usr/share/nginx/html
 
 
-# Stage 2
-
-FROM nginx:alpine
-COPY --from=node /usr/local/app/dist/client /usr/share/nginx/html
-
-
+#To run 
+#docker run -it --rm -p 80:80 --name container-name nikhil3972/pharmacy-management:v1
