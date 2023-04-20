@@ -16,7 +16,8 @@ export class ProcureComponent {
   constructor(private procureService:ProcureService){}
   ngOnInit(){
 
-
+    this.displayManufacturers();
+    this.displayManufacturers();
 
   }
   displayManufacturers(){

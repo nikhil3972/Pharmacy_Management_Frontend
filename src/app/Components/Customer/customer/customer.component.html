@@ -1,16 +1,7 @@
 <main style="margin-top: 58px">
   <div class="container pt-4">
-
-    <h3>Search Customer</h3>
-    <form class="d-none d-md-flex input-group w-auto my-auto">
-      <input autocomplete="off" type="search" class="form-control rounded" placeholder='Search (ctrl + "/" to focus)'
-        [ngModel]="searchId" />
-      <i class="fas fa-search"></i>
-      <br>
-      <button class="btn btn-success" (click)="getCustomerById(searchId)">
-        Search
-      </button>
-    </form>
+   
+      <h2> Customer details page</h2>
     <br /><br />
     <ng-container *ngIf="bCus==true; then displayCustomer; else displayMedicine"></ng-container>
 
@@ -19,51 +10,85 @@
         <div class="col-md-12">
 
 
-          <form>
-            <fieldset>
+            <form>
+              <fieldset>
+              
+                <h4 class="text-center">Add Customer details</h4>
 
-              <h4 class="text-center">Add Customer</h4>
-
-              <div class="form-group">
-                <label for="Name"><span class="req">* </span> Customer Id: </label>
-                <input required type="text" [(ngModel)]="CustomerMedicine.id" name="name" id="name"
-                  class="form-control phone" maxlength="28" placeholder="Enter your firstname..." />
-              </div>
-
-              <div class="form-group">
-                <label for="Name"><span class="req">* </span> FirstName: </label>
-                <input required type="text" [(ngModel)]="CustomerMedicine.firstName" name="name" id="name"
-                  class="form-control phone" maxlength="28" placeholder="Enter your firstname..." />
-              </div>
-              <div class="form-group">
-                <label for="lastName"><span class="req">* </span> LastName:
-                </label>
-                <input required type="text" [(ngModel)]="CustomerMedicine.lastName" name="name" id="lastname"
-                  class="form-control phone" maxlength="28" placeholder="Enter your lastname..." />
-              </div>
-
-              <div class="form-group">
-                <label for="firstname"><span class="req">* </span> Email: </label>
-                <input class="form-control" type="text" [(ngModel)]="CustomerMedicine.email" name="email" id="txt"
-                  required placeholder="Enter valid email address" />
-                <div id="errFirst"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="contact"><span class="req">* </span>Contact Number:
-                </label>
-                <input required type="text" [(ngModel)]="CustomerMedicine.contact" name="contact" id="contact"
-                  class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
-              </div>
-              <div class="form-group mt-3 text-center">
-                <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
-                  (click)="addCustomer()" />
-              </div>
-            </fieldset>
-          </form>
+               
+    
+                <div class="form-group">
+                  <label for="Name"><span class="req">* </span> FirstName: </label>
+                  <input
+                    required
+                    type="text"
+                    [(ngModel)]="CustomerMedicine.firstName"
+                    name="name"
+                    id="name"
+                    class="form-control phone"
+                    maxlength="28"
+                    placeholder="Enter your firstname..."
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lastName"
+                    ><span class="req">* </span> LastName:
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    [(ngModel)]="CustomerMedicine.lastName"
+                    name="name"
+                    id="lastname"
+                    class="form-control phone"
+                    maxlength="28"
+                    placeholder="Enter your lastname..."
+                  />
+                </div>
+    
+                <div class="form-group">
+                  <label for="firstname"><span class="req">* </span> Email: </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="CustomerMedicine.email"
+                    name="email"
+                    id="txt"
+                    required
+                    placeholder="Enter valid email address"
+                  />
+                  <div id="errFirst"></div>
+                </div>
+    
+                <div class="form-group">
+                  <label for="contact"
+                    ><span class="req">* </span>Contact Number:
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    [(ngModel)]="CustomerMedicine.contact"
+                    name="contact"
+                    id="contact"
+                    class="form-control phone"
+                    maxlength="28"
+                    placeholder="Enter your Phone number.."
+                  />
+                </div>
+                <div class="form-group mt-3 text-center">
+                  <input
+                    class="btn btn-success"
+                    type="submit"
+                    name="submit_reg"
+                    value="Register"
+                    (click)="addCustomer()"
+                  />
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
-      </div>
-    </ng-template>
+          </ng-template>
 
     <ng-template #displayMedicine>
       <div class="row">
@@ -100,9 +125,9 @@
     </ng-template>
   </div>
 
-  <div class="py-4 text-center">
+  <!-- <div class="py-4 text-center">
     <button (click)="display()" class="btn btn-dark">Display</button>
-  </div>
+  </div> -->
   <div class="container">
     <table class="table table-striped text-center">
       <thead>
@@ -144,7 +169,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Modal title
+                   Edit Customer entry
                   </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -153,8 +178,15 @@
                     <fieldset>
                       <div class="form-group">
                         <label for="id"><span class="req">* </span> Id: </label>
-                        <input required type="text" name="id" id="id" class="form-control phone" maxlength="28"
-                          value="{{ item.id }}" />
+                        <input
+                          required
+                          type="text"
+                          name="id"
+                          id="id"
+                          class="form-control phone"
+                          maxlength="28"
+                          value="{{ item.id }}"
+                        />
                       </div>
 
                       <div class="form-group">

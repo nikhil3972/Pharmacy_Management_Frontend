@@ -34,7 +34,10 @@ export class CustomerComponent {
   constructor(private customerService: CustomerService, private medicineService: MedicineService) { }
 
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.display();
+    this.display();
+  }
   display() {
     this.customerMedicine = this.customerService.getCustomerWithMedicine().subscribe((data) => this.customerMedicine = data);
     return this.customerMedicine;
@@ -82,6 +85,9 @@ export class CustomerComponent {
     this.bCus = false;
     let resp = await this.medicineService.postMethod(this.Medicine);
     resp.subscribe((data) => (this.customers = data));
+
+    this.display();
+    this.display();
   };
 
 

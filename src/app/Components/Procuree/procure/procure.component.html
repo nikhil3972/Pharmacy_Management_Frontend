@@ -3,12 +3,12 @@
     <div class="row pt-4">
       <div class="col-md-12">
         <form>
+          <div>
+            <h2>Procure System details page</h2>
+        </div>
+    
           <fieldset>
-            <div class="form-group">
-              <label for="id"><span class="req">* </span> Id: </label>
-              <input required type="text" [(ngModel)]="Manufacturer.id" name="id" id="id" class="form-control phone"
-                maxlength="28" placeholder="Enter your id..." />
-            </div>
+            
 
 
             <div class="form-group">
@@ -42,11 +42,11 @@
     </div>
   </div>
 
-  <div class="py-4 text-center">
+  <!-- <div class="py-4 text-center">
     <button (click)="displayManufacturers()" class="btn btn-dark">
       Display
     </button>
-  </div>
+  </div> -->
 
   <div class="container">
     <table class="table table-striped">
@@ -84,18 +84,14 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Modal title
+                   Edit Procure details
                   </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form>
                     <fieldset>
-                      <div class="form-group">
-                        <label for="id"><span class="req">* </span> Id: </label>
-                        <input required type="text" name="id" id="id" class="form-control phone" maxlength="28"
-                          value="{{ item.id }}" />
-                      </div>
+                      
 
                       <div class="form-group">
                         <label for="Name"><span class="req">* </span> Name:

@@ -192,3 +192,8 @@ body {
   justify-content: flex-end;
   border-top: none;
 }
+h2 {
+  text-align: center;
+  margin: 10px;
+  background-color: blanchedalmond;
+}
