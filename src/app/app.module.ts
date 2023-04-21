@@ -12,6 +12,9 @@ import { ProcureComponent } from './Components/Procuree/procure/procure.componen
 import { LoginComponent } from './Components/Login/login/login.component';
 import { DiseaseComponent } from './Components/disease/disease.component';
 import { SalesComponent } from './Components/Sales/sales.component';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -22,15 +25,17 @@ import { SalesComponent } from './Components/Sales/sales.component';
     ProcureComponent,
     LoginComponent,
     DiseaseComponent,
-    SalesComponent
+    SalesComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,  
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
