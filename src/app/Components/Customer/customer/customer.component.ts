@@ -13,7 +13,7 @@ import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 })
 export class CustomerComponent {
 
-  
+
 
   bCus: boolean = true;
   bMed: boolean = false;
@@ -34,7 +34,7 @@ export class CustomerComponent {
   constructor(private customerService: CustomerService, private medicineService: MedicineService) { }
 
 
-  ngOnInit() { 
+  ngOnInit() {
     this.display();
     this.display();
   }
@@ -83,7 +83,7 @@ export class CustomerComponent {
 
   public addMedicine = async () => {
     this.bCus = false;
-    let resp = await this.medicineService.postMethod(this.Medicine);
+    let resp = await this.medicineService.postMedicine(this.Medicine);
     resp.subscribe((data) => (this.customers = data));
 
     this.display();

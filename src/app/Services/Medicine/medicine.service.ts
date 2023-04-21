@@ -12,7 +12,7 @@ export class MedicineService {
   public getMedicine(){
     return this.http.get("http://localhost:8010/getAllMedicine");
   }
-  public postMethod(body: any){
+  public postMedicine(body: any){
     return this.http.post("http://localhost:8010/insertMedicine",body,{responseType:'text'as 'json'});
   }
   public deleteMedicine(id:number){

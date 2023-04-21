@@ -35,6 +35,9 @@ export class DashboardComponent {
    this.ngOnInit();
    this.ngOnInit();
   }
+  openaddForm(){
+    this.showForm=true;
+  }
   openForm(item:Medicine){
     this.showForm=true;
       this.name=item.name;
@@ -76,6 +79,12 @@ export class DashboardComponent {
     if(this.id){
       body['id'] =this.id;
       this.medicineService.putMedicine(body).subscribe(
+        (res)=>{
+          this.medicine()
+        },
+      )
+    }else{
+      this.medicineService.postMedicine(body).subscribe(
         (res)=>{
           this.medicine()
         },
