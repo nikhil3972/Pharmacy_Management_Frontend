@@ -16,6 +16,8 @@ export class SalesComponent implements OnInit{
 
 
   ngOnInit() {
+    this.displaySales();
+    this.displaySales();
   }
   displaySales(){
     this.sales=this.service.getSales().subscribe(data=>
