@@ -69,12 +69,12 @@ export class DashboardComponent {
     this.showForm =false;
 
     let  body = {
-      medname:this.medname,
+      name:this.medname,
       description:this.description,
       price:this.price,
       dosage:this.dosage,
-      // Manufacture_date=this.Manufacture_date
-      // expiry_Date:this.expiry_Date,
+      this:this.Manufacture_date,
+      // this:this.expiry_Date,
       Current_Stock:this.Current_Stock,
       id:this.id
     }
@@ -96,6 +96,8 @@ export class DashboardComponent {
         },
       )
     }
+    this.ngOnInit();
+    this.ngOnInit();
 
   }
 

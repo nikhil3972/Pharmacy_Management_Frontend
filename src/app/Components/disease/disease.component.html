@@ -6,15 +6,14 @@
           <form>
             <div>
 
-              <h2>Diseases information page </h2>
 
               <h2>Diseases information page</h2>
 
           </div>
             <fieldset>
-             
-              
-  
+
+
+
               <div class="form-group">
                 <label for="Name"><span class="req">* </span>Disease Name: </label>
                 <input
@@ -43,10 +42,10 @@
                   placeholder="Enter Info..."
                 />
               </div>
-  
-             
-  
-              
+
+
+
+
               <div class="form-group mt-3 text-center">
                 <input
                   class="btn btn-success"
@@ -56,8 +55,8 @@
                   (click)="addDisease()"
                 />
               </div>
-             
-              
+
+
             </fieldset>
           </form>
         </div>
@@ -74,36 +73,36 @@
       <!-- <div class="py-4 text-center">
         <button (click)="display()" class="btn btn-dark">Display</button>
       </div> -->
-  
+
       <div class="container">
         <table class="table table-striped text-center">
           <thead>
             <tr>
-            
+
               <th>Id</th>
               <th>Disease Name</th>
               <th>Disease Info</th>
              <th>Action</th>
-             
+
             </tr>
           </thead>
           <tbody>
-           
-            
+
+
             <tr *ngFor= "let item of diseases;">
-             
+
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.info }}</td>
-          
-              
-            
+
+
+
               <td>
                 <button class="btn btn-danger"  (click)="deleteDisease(item)">
                   Delete
                 </button>
               </td>
-             
+
               <td>
                 <button
                   type="button"
@@ -138,8 +137,8 @@
                     <div class="modal-body">
                       <form>
                         <fieldset>
-                          
-    
+
+
                           <div class="form-group">
                             <label for="Name"
                               ><span class="req">* </span> Name:
@@ -169,11 +168,11 @@
                               value="{{ item.info }}"
                             />
                           </div>
-    
-                        
-                         
-    
-                          
+
+
+
+
+
                         </fieldset>
                       </form>
                     </div>
@@ -188,7 +187,7 @@
                       <button
                         type="button"
                         class="btn btn-primary"
-                        
+
                       >
                         Save changes
                       </button>
@@ -196,11 +195,10 @@
                   </div>
                 </div>
               </div>
-         
+
             </tr>
           </tbody>
         </table>
       </div>
-    
+
   </main>
-  
