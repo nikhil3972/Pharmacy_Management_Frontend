@@ -13,6 +13,8 @@ disease:Disease=new Disease(0,"","");
 constructor(private diseaseService:DiseaseService){}
 ngOnInit() {
 
+  this.display();
+  this.display();
 
 }
 display(){
