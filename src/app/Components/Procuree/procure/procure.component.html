@@ -6,27 +6,23 @@
           <div>
             <h2>Procure System details page</h2>
         </div>
-    
+
           <fieldset>
-            
+
 
 
             <div class="form-group">
               <label for="Name"><span class="req">* </span> Name: </label>
-              <input required type="text" [(ngModel)]="Manufacturer.name" name="name" id="name"
+              <input required type="text" [(ngModel)]="ProcureMedicines.name" name="name" id="name"
                 class="form-control phone" maxlength="28" placeholder="Enter your firstname..." />
             </div>
             <div class="form-group">
               <label for="contact"><span class="req">* </span>Contact Number:
               </label>
-              <input required type="text" [(ngModel)]="Manufacturer.contact" name="contact" id="contact"
+              <input required type="text" [(ngModel)]="ProcureMedicines.contact" name="contact" id="contact"
                 class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
             </div>
-            <div class="form-group">
-              <label for="Name"><span class="req">* </span> Medicine ID:: </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.id" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter Medicine ID..." />
-            </div>
+
             <div class="form-group">
               <label for="Name"><span class="req">* </span> Medicine Name: </label>
               <input required type="text" [(ngModel)]="ProcureMedicines.medname" name="name" id="name"
@@ -55,7 +51,6 @@
           <th>Id</th>
           <th>Name</th>
           <th>Contact Number</th>
-          <th>Medicine ID</th>
           <th>Medicine Name</th>
           <th>Action</th>
         </tr>
@@ -65,7 +60,6 @@
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.contact }}</td>
-          <td>{{ item.medid }}</td>
           <td>{{ item.medname }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
@@ -91,19 +85,19 @@
                 <div class="modal-body">
                   <form>
                     <fieldset>
-                      
+
 
                       <div class="form-group">
                         <label for="Name"><span class="req">* </span> Name:
                         </label>
-                        <input required type="text" name="name" id="name" [ngModel]="Manufacturer.name"
+                        <input required type="text" name="name" id="name" [ngModel]="ProcureMedicines.name"
                           class="form-control phone" maxlength="28" />
                       </div>
 
                       <div class="form-group">
                         <label for="contact"><span class="req">* </span>Contact Number:
                         </label>
-                        <input required type="text" name="contact" id="contact" [ngModel]="Manufacturer.contact"
+                        <input required type="text" name="contact" id="contact" [ngModel]="ProcureMedicines.contact"
                           class="form-control phone" maxlength="28" value="{{ item.contact }}" />
                       </div>
                     </fieldset>

@@ -11,15 +11,16 @@ export class DashboardComponent {
 
   medicine!:any;
   formHeader ="Add Medicine";
-  medname ="";
-  description="";
-  dosage="";
-  price!:Number;
-  Manufacture_date=new Date();
-  expiry_Date=new Date();
-  Current_Stock!:number;
+  id!:number;
+    name!:string;
+    description!:string;
+    dosage!:string;
+    price!:number;
+    manufacture_date!:Date;
+    expiry_date!:Date;
+    current_stock!:number
   showForm= false;
-  id!:Number;
+
 
   constructor(private medicineService : MedicineService){}
 
@@ -36,19 +37,15 @@ export class DashboardComponent {
   }
   openForm(item:Medicine){
     this.showForm=true;
-    if(item){
-      this.medname=item.name;
+      this.name=item.name;
       this.description=item.description,
       this.dosage=item.dosage,
       this.price=item.price,
-      this.Manufacture_date=item.manufacture_date,
-      this.expiry_Date=item.expiry_date,
-      this.Current_Stock=item.current_stock,
+      this.manufacture_date=item.manufacture_date,
+      this.expiry_date=item.expiry_date,
+      this.current_stock=item.current_stock,
       this.id =item.id;
       this.formHeader = "Edit Medicine"
-    }else{
-      this.formHeader="Add Medicine"
-    }
   }
 
   closeForm(){
@@ -56,48 +53,38 @@ export class DashboardComponent {
     this.clearForm();
   }
   clearForm(){
-    this.medname="";
+    this.name="";
       this.description="",
       this.dosage="",
       this.price=0,
-      this.Manufacture_date=new Date(0),
-      this.expiry_Date=new Date(0),
-      this.Current_Stock=0
+      this.manufacture_date=new Date(0),
+      this.expiry_date=new Date(0),
+      this.current_stock=100
   }
   saveMedicine(){
-
     this.showForm =false;
-
     let  body = {
-      name:this.medname,
+      name:this.name,
       description:this.description,
       price:this.price,
       dosage:this.dosage,
-      this:this.Manufacture_date,
-      // this:this.expiry_Date,
-      Current_Stock:this.Current_Stock,
+      manufacture_date:this.manufacture_date,
+      expiry_date:this.expiry_date,
+      current_stock:this.current_stock,
       id:this.id
     }
-
     if(this.id){
       body['id'] =this.id;
       this.medicineService.putMedicine(body).subscribe(
         (res)=>{
           this.medicine()
         },
-
-      )
-    }
-
-    else{
-      this.medicineService.postMethod(body).subscribe(
-        (res)=>{
-          this.medicine()
-        },
       )
     }
     this.ngOnInit();
     this.ngOnInit();
+    this.ngOnInit();
+   this.ngOnInit();
 
   }
 
