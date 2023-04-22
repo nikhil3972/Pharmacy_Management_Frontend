@@ -56,7 +56,7 @@ export class LoginComponent  {
     if (obj != null && this.loginPassword.value === obj.password) {
       this.invalidLogin = false;
       this.loginSuccess = true;
-      this.successMessage = 'Login Successful';
+      this.successMessage = 'Logged in Successfuly';
       // alert(this.successMessage); 
       // this.router.navigate(['/dashboard']);
     }
