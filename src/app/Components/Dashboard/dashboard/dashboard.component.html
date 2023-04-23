@@ -29,9 +29,9 @@
           <td>{{ item.description }}</td>
           <td>{{ item.dosage }}</td>
           <td>{{ item.price }}</td>
-          <td>{{ item.manufacture_date }}</td>
-          <td>{{ item.expiry_date }}</td>
-          <td>{{ item.current_stock }}</td>
+          <td>{{ item.manufactureDate }}</td>
+          <td>{{ item.expiryDate }}</td>
+          <td>{{ item.currentStock }}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteMedicineData(item)">
               Delete
@@ -69,15 +69,15 @@
     </div>
     <div class="group">
         <label for="medicine_mfg">Mfg</label>
-        <input type="date" class="form-control" [(ngModel)]="manufacture_date" name="Manufacture_date" required min="1">
+        <input type="date" class="form-control" [(ngModel)]="manufactureDate" name="Manufacture_date" required min="1">
     </div>
     <div class="group">
         <label for="exp">Expiry</label>
-        <input type="date" class="form-control" [(ngModel)]="expiry_date" name="Expiry_Date" required min="1">
+        <input type="date" class="form-control" [(ngModel)]="expiryDate" name="Expiry_Date" required min="1">
     </div>
     <div class="group">
       <label for="stock">Stock</label>
-      <input type="number" class="form-control" [(ngModel)]="current_stock" name="Current_Stock" required min="1">
+      <input type="number" class="form-control" [(ngModel)]="currentStock" name="Current_Stock" required min="1">
   </div>
 
     <div class="action">

@@ -4,9 +4,9 @@ export class Medicine{
     description!:string;
     dosage!:string;
     price!:number;
-    manufacture_date!:Date;
-    expiry_date!:Date;
-    current_stock!:number
+    manufactureDate!:Date;
+    expiryDate!:Date;
+    currentStock!:number
 
-     constructor(id:number, medicineName:string, description:string, dosage:string, price:number, manufacture_date:Date, expiry_date:Date, current_stock:number) {}
+     constructor(id:number, medicineName:string, description:string, dosage:string, price:number, manufactureDate:Date, expiryDate:Date, currentStock:number) {}
  }
