@@ -25,7 +25,7 @@
       <tbody>
         <tr *ngFor="let item of medicine; let i = index">
           <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
+          <td>{{ item.medicineName }}</td>
           <td>{{ item.description }}</td>
           <td>{{ item.dosage }}</td>
           <td>{{ item.price }}</td>
@@ -53,7 +53,7 @@
     <h2 class="text-info text-center">{{formHeader}}</h2>
     <div class="group">
         <label for="medicine_name">Name</label>
-        <input type="text" class="form-control" [(ngModel)]="name" name="mname" required minlength="5">
+        <input type="text" class="form-control" [(ngModel)]="medicineName" name="mname" required minlength="5">
     </div>
     <div class="group">
       <label for="medicine_desc">Desc</label>

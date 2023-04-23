@@ -12,7 +12,7 @@ export class DashboardComponent {
   medicine!:any;
   formHeader ="Add Medicine";
   id!:number;
-    name!:string;
+    medicineName!:string;
     description!:string;
     dosage!:string;
     price!:number;
@@ -25,7 +25,7 @@ export class DashboardComponent {
   constructor(private medicineService : MedicineService){}
 
   ngOnInit(){
-    this.medicine = this.medicineService.getMedicine().subscribe(data =>
+    this.medicine = this.medicineService.getMedicineSorted().subscribe(data =>
       this.medicine = data);
       return this.medicine;
   }
@@ -40,7 +40,7 @@ export class DashboardComponent {
   }
   openForm(item:Medicine){
     this.showForm=true;
-      this.name=item.name;
+      this.medicineName=item.medicineName;
       this.description=item.description,
       this.dosage=item.dosage,
       this.price=item.price,
@@ -56,7 +56,7 @@ export class DashboardComponent {
     this.clearForm();
   }
   clearForm(){
-    this.name="";
+    this.medicineName="";
       this.description="",
       this.dosage="",
       this.price=0,
@@ -67,7 +67,7 @@ export class DashboardComponent {
   saveMedicine(){
     this.showForm =false;
     let  body = {
-      name:this.name,
+      medicineName:this.medicineName,
       description:this.description,
       price:this.price,
       dosage:this.dosage,

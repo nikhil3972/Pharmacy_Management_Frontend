@@ -1,6 +1,6 @@
 export class Medicine{
     id!:number;
-    name!:string;
+    medicineName!:string;
     description!:string;
     dosage!:string;
     price!:number;
@@ -8,5 +8,5 @@ export class Medicine{
     expiry_date!:Date;
     current_stock!:number
 
-     constructor(id:number, name:string, description:string, dosage:string, price:number, manufacture_date:Date, expiry_date:Date, current_stock:number) {}
+     constructor(id:number, medicineName:string, description:string, dosage:string, price:number, manufacture_date:Date, expiry_date:Date, current_stock:number) {}
  }
