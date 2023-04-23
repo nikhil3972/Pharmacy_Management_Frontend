@@ -12,20 +12,20 @@ export class DashboardComponent {
   medicine!:any;
   formHeader ="Add Medicine";
   id!:number;
-    name!:string;
+    medicineName!:string;
     description!:string;
     dosage!:string;
     price!:number;
-    manufacture_date!:Date;
-    expiry_date!:Date;
-    current_stock!:number
+    manufactureDate!:Date;
+    expiryDate!:Date;
+    currentStock!:number
   showForm= false;
 
 
   constructor(private medicineService : MedicineService){}
 
   ngOnInit(){
-    this.medicine = this.medicineService.getMedicine().subscribe(data =>
+    this.medicine = this.medicineService.getMedicineSorted().subscribe(data =>
       this.medicine = data);
       return this.medicine;
   }
@@ -40,13 +40,13 @@ export class DashboardComponent {
   }
   openForm(item:Medicine){
     this.showForm=true;
-      this.name=item.name;
+      this.medicineName=item.medicineName;
       this.description=item.description,
       this.dosage=item.dosage,
       this.price=item.price,
-      this.manufacture_date=item.manufacture_date,
-      this.expiry_date=item.expiry_date,
-      this.current_stock=item.current_stock,
+      this.manufactureDate=item.manufactureDate,
+      this.expiryDate=item.expiryDate,
+      this.currentStock=item.currentStock,
       this.id =item.id;
       this.formHeader = "Edit Medicine"
   }
@@ -56,24 +56,24 @@ export class DashboardComponent {
     this.clearForm();
   }
   clearForm(){
-    this.name="";
+    this.medicineName="";
       this.description="",
       this.dosage="",
       this.price=0,
-      this.manufacture_date=new Date(0),
-      this.expiry_date=new Date(0),
-      this.current_stock=100
+      this.manufactureDate=new Date(0),
+      this.expiryDate=new Date(0),
+      this.currentStock=100
   }
   saveMedicine(){
     this.showForm =false;
     let  body = {
-      name:this.name,
+      medicineName:this.medicineName,
       description:this.description,
       price:this.price,
       dosage:this.dosage,
-      manufacture_date:this.manufacture_date,
-      expiry_date:this.expiry_date,
-      current_stock:this.current_stock,
+      manufactureDate:this.manufactureDate,
+      expiryDate:this.expiryDate,
+      currentStock:this.currentStock,
       id:this.id
     }
     if(this.id){

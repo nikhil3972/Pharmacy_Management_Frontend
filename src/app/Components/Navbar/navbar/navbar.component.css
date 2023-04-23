@@ -30,8 +30,8 @@ body {
 .sidebar .active {
   border-radius: 5px;
   
-  box-shadow: 0 2px 5px 0 #f8dbbc, 0 2px 10px 0 #f8dbbc;
-  background-color: #f8dbbc;
+  box-shadow: 0 2px 5px 0 rgb(152, 232, 152), 0 2px 10px 0 rgb(152, 232, 152);
+  background-color: rgb(152, 232, 152);
 }
 
 .sidebar-sticky {
@@ -51,5 +51,5 @@ body {
   color: green;
 }
 nav a.active {
-  color: #f8dbbc;
+  color: rgb(152, 232, 152);
 }

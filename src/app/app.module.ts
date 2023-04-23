@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
 import { ProcureComponent } from './Components/Procuree/procure/procure.component';
-import { LoginComponent } from './Components/Login/login/login.component';
 import { DiseaseComponent } from './Components/disease/disease.component';
 import { SalesComponent } from './Components/Sales/sales.component';
 import {MatSortModule} from '@angular/material/sort';
@@ -23,7 +22,6 @@ import {MatTableModule} from '@angular/material/table';
     DashboardComponent,
     CustomerComponent,
     ProcureComponent,
-    LoginComponent,
     DiseaseComponent,
     SalesComponent,
   ],
@@ -32,7 +30,6 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     MatSortModule,
     MatTableModule

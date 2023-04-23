@@ -21,4 +21,8 @@ export class MedicineService {
   public putMedicine(body: any){
     return this.http.put("http://localhost:8010/updateMedicine",body)
   }
+
+  public getMedicineSorted(){
+    return this.http.get("http://localhost:8010/getAllMedicineSorted");
+  }
 }
