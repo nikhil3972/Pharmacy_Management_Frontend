@@ -32,9 +32,11 @@
 
                 <div class="form-group">
                   <label for="firstname"><span class="req">* </span> Email: </label>
-                  <input class="form-control" type="text" [(ngModel)]="CustomerMedicine.email" name="email" required id="txt"
+                  <input class="form-control" type="text" [(ngModel)]="CustomerMedicine.email" name="email" #emailInput="ngModel" required id="txt"
                      placeholder="Enter valid email address" />
                   <div id="errFirst"></div>
+                 
+
                 </div>
 
                 <div class="form-group">
@@ -49,6 +51,7 @@
                 </div>
               </fieldset>
             </form>
+            <script src="http://code.amgularjs.org/1.2.3/angular.min.js"></script>
           </div>
         </div>
       </ng-template>

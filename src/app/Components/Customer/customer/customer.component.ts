@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { CustomerMedicine } from 'src/app/Model/CustomerMedicine';
 import { Medicine } from 'src/app/Model/Medicine';
 import { User } from 'src/app/Model/User';
@@ -13,7 +14,11 @@ import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 })
 export class CustomerComponent {
 
-
+  email = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
+  
 
   bCus: boolean = true;
   bMed: boolean = false;
