@@ -13,6 +13,8 @@ import { DiseaseComponent } from './Components/disease/disease.component';
 import { SalesComponent } from './Components/Sales/sales.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     ReactiveFormsModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

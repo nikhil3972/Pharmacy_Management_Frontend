@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Medicine } from 'src/app/Model/Medicine';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 
@@ -10,6 +12,8 @@ import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 export class DashboardComponent {
 
   medicine!:any;
+  displayedColumns: string[] = ['id', 'name', 'desc', 'dosage','price','manufactureDate','expiryDate','currentStock','Action'];
+  dataSource :any;
   formHeader ="Add Medicine";
   id!:number;
     medicineName!:string;
@@ -21,13 +25,18 @@ export class DashboardComponent {
     currentStock!:number
   showForm= false;
 
+  @ViewChild(MatSort) sort!:MatSort;
+
 
   constructor(private medicineService : MedicineService){}
 
   ngOnInit(){
-    this.medicine = this.medicineService.getMedicineSorted().subscribe(data =>
+    this.medicineService.getMedicine().subscribe(data =>
       this.medicine = data);
-      return this.medicine;
+
+      this.dataSource=new MatTableDataSource<Medicine>(this.medicine);
+      this.dataSource.sort=this.sort;
+      // return this.medicine;
   }
   deleteMedicineData(item:  Medicine){
     this.medicineService.deleteMedicine(item.id).subscribe((resp) => {
