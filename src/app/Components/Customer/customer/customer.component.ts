@@ -7,6 +7,7 @@ import { CustomerService } from 'src/app/Services/Customer/customer.service';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 
 
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -32,40 +33,48 @@ export class CustomerComponent {
   searchTerm!: string;
   users!: any[];
 
-  Customer: User = new User(0, 50, '', '', '', 0);
-  Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
+  Customer: User = new User("","","",0,"");
+  // Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
+  
 
-  CustomerMedicine: CustomerMedicine = new CustomerMedicine(0, "", "", "", "", "", 10.05);
-  constructor(private customerService: CustomerService, private medicineService: MedicineService) { }
+  // CustomerMedicine: CustomerMedicine = new CustomerMedicine(0, "", "", "", "", "", 10.05);
+  constructor(public customerService: CustomerService, public medicineService: MedicineService) { }
+
 
 
   ngOnInit() {
     this.display();
     this.display();
   }
-  display() {
-    this.customerMedicine = this.customerService.getCustomerWithMedicine().subscribe((data) => this.customerMedicine = data);
-    return this.customerMedicine;
-  }
 
-  public addCustomerWithMedicine = async () => {
-    let resp = await this.customerService.postCustomerWithMedicine(this.CustomerMedicine);
-    resp.subscribe((data) => (this.customerMedicine = data));
-    this.display();
-    this.display();
-  };
 
-  public getCustomerById(searchId: number) {
-    this.customerService.deleteData(searchId).subscribe((resp) => {
-      console.log(resp);
-    });
-    this.display();
-    this.display();
+  display(){
+    this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
+     return this.customers;
   }
+  // display() {
+  //   this.customerMedicine = this.customerService.getCustomerWithMedicine().subscribe((data) => this.customerMedicine = data);
+  //   return this.customerMedicine;
+  // }
 
   public addCustomer = async () => {
-    this.bCus = false;
+    let resp = await this.customerService.postMethod(this.Customer);
+    resp.subscribe((data) => (this.customers = data));
+    this.display();
+    this.display();
   };
+
+  // public getCustomerById(searchId: number) {
+  //   this.customerService.deleteData(searchId).subscribe((resp) => {
+  //     console.log(resp);
+  //   });
+  //   this.display();
+  //   this.display();
+  // }
+
+  // public addCustomer = async () => {
+  //   this.bCus = false;
+  // };
   deleteData(item: User) {
     this.customerService.deleteData(item.id).subscribe((resp) => {
       console.log(resp);
@@ -82,18 +91,18 @@ export class CustomerComponent {
 
 
 
-  public getMedicineData() {
-    this.medicine = this.medicineService.getMedicine().subscribe((data) => (this.medicine = data));
-  }
+  // public getMedicineData() {
+  //   this.medicine = this.medicineService.getMedicine().subscribe((data) => (this.medicine = data));
+  // }
 
-  public addMedicine = async () => {
-    this.bCus = false;
-    let resp = await this.medicineService.postMedicine(this.Medicine);
-    resp.subscribe((data) => (this.customers = data));
+  // public addMedicine = async () => {
+  //   this.bCus = false;
+  //   let resp = await this.medicineService.postMedicine(this.Medicine);
+  //   resp.subscribe((data) => (this.customers = data));
 
-    this.display();
-    this.display();
-  };
+  //   this.display();
+  //   this.display();
+  // };
 
 
 

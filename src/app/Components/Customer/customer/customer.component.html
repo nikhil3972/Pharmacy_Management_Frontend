@@ -4,7 +4,7 @@
     <h2> Customer details page</h2>
 
       <br /><br />
-      <ng-container *ngIf="bCus==true; then displayCustomer; else displayMedicine"></ng-container>
+      <ng-container *ngIf="bCus==true; then displayCustomer;  "></ng-container>
 
       <ng-template #displayCustomer>
         <div class="row">
@@ -16,55 +16,69 @@
 
                 <h4 class="text-center">Add Customer details</h4>
 
-
+                <!-- <div class="form-group">
+                  <label for="Name"><span class="req">* </span> Id: </label>
+                  <input required type="number" [(ngModel)]="customers.Id" name="name" id="name"
+                    class="form-control phone" maxlength="28"  placeholder="Enter Id..." />
+                </div> -->
 
                 <div class="form-group">
                   <label for="Name"><span class="req">* </span> FirstName: </label>
-                  <input required type="text" [(ngModel)]="CustomerMedicine.firstName" name="name" id="name"
+                  <input required type="text" [(ngModel)]="Customer.firstName" name="name" id="name"
                     class="form-control phone" maxlength="28"  placeholder="Enter your firstname..." />
                 </div>
                 <div class="form-group">
                   <label for="lastName"><span class="req">* </span> LastName:
                   </label>
-                  <input required type="text" [(ngModel)]="CustomerMedicine.lastName" name="name" id="lastname"
+                  <input required type="text" [(ngModel)]="Customer.lastName" name="name" id="lastname"
                     class="form-control phone" maxlength="28" placeholder="Enter your lastname..." />
                 </div>
 
-                <div class="form-group">
-                  <label for="firstname"><span class="req">* </span> Email: </label>
-                  <input class="form-control" type="text" [(ngModel)]="CustomerMedicine.email" name="email" #emailInput="ngModel" required id="txt"
-                     placeholder="Enter valid email address" />
-                  <div id="errFirst"></div>
+              
                  
+        
 
+                <div class="form-group">
+                  <label for="contact"><span class="req">* </span>Medicine Name
+                  </label>
+                  <input required type="text" [(ngModel)]="Customer.medicineName" name="contact" id="contact"
+                    class="form-control phone" maxlength="28" placeholder="Enter medicine name.." />
                 </div>
-
+                
+                <div class="form-group">
+                  <label for="contact"><span class="req">* </span>Medicine price
+                  </label>
+                  <input required type="number" [(ngModel)]="Customer.price" name="contact" id="contact"
+                    class="form-control phone" maxlength="28" placeholder="Enter medicine price.." />
+                </div>
                 <div class="form-group">
                   <label for="contact"><span class="req">* </span>Contact Number:
                   </label>
-                  <input required type="text" [(ngModel)]="CustomerMedicine.contact" name="contact" id="contact"
+                  <input required type="text" [(ngModel)]="Customer.contact" name="contact" id="contact"
                     class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
                 </div>
                 <div class="form-group mt-3 text-center">
                   <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
                     (click)="addCustomer()" />
                 </div>
+                
               </fieldset>
             </form>
             <script src="http://code.amgularjs.org/1.2.3/angular.min.js"></script>
           </div>
         </div>
       </ng-template>
+      </div>
+      </main>
 
-      <ng-template #displayMedicine>
+     
+      <!-- <ng-template #displayMedicine>
         <div class="row">
           <div class="col-md-12">
             <form>
               <fieldset>
 
-                <h4 class="text-center">Add Medicine</h4>
-                <p>Customer id : {{CustomerMedicine.id}}</p>
-                <p>Customer LN : {{CustomerMedicine.lastName}}</p>
+               
 
                 <div class="form-group">
                   <label for="Name"><span class="req">* </span> Name: </label>
@@ -89,121 +103,55 @@
           </div>
         </div>
       </ng-template>
-  </div>
+  </div>  -->
 
   <!-- <div class="py-4 text-center">
     <button (click)="display()" class="btn btn-dark">Display</button>
   </div> -->
-  <div class="container">
+
+  <main style="margin-top: 58px">
+    <div class="container pt-4">
+  
     <table class="table table-striped text-center">
       <thead>
         <tr>
           <th>Id</th>
           <th>FirstName</th>
           <th>LastName</th>
-          <th>Email</th>
+         
           <th>Contact Number</th>
           <th>Medicine Name</th>
           <th>Medicine Price</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of customerMedicine">
+        <tr *ngFor="let item of customers">
           <td>{{ item.id }}</td>
           <td>{{ item.firstName }}</td>
           <td>{{ item.lastName }}</td>
-          <td>{{ item.email }}</td>
-          <td>{{ item.contact }}</td>
-          <td>{{ item.name }}</td>
+      
+          <td>{{ item.contact}}</td>
+          <td>{{ item.medicineName }}</td>
           <td>{{ item.price }}</td>
-
-          <td>
+        
+ <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
               Delete
             </button>
-          </td>
-          <!-- <td><button (click)="  updateCustomer(item)">Edit</button></td> -->
-          <td>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Edit
-            </button>
-          </td>
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    Edit Customer entry
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <fieldset>
-
-
-                      <div class="form-group">
-                        <label for="Name"><span class="req">* </span> FirstName:
-                        </label>
-                        <input required type="text" name="name" id="name" [ngModel]="Customer.firstName"
-                          class="form-control phone" maxlength="28" />
-                      </div>
-                      <div class="form-group">
-                        <label for="lastName"><span class="req">* </span> LastName:
-                        </label>
-                        <input required type="text" name="name" id="lastname" [ngModel]="Customer.lastName"
-                          class="form-control phone" maxlength="28" value="{{ item.lastName }}" />
-                      </div>
-
-                      <div class="form-group">
-                        <label for="firstname"><span class="req">* </span> Email:
-                        </label>
-                        <input class="form-control" type="text" name="email" id="txt" [ngModel]="Customer.email"
-                          required value="{{ item.email }}" />
-                        <div id="errFirst"></div>
-                      </div>
-                      <!-- <div class="form-group">
-                        <label for="medicineName"
-                          ><span class="req">* </span> Medicine Name:
-                        </label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          name="email"
-                          id="txt"
-                          [ngModel]="Customer.name"
-                          required
-                          value="{{ item.name }}"
-                        />
-                        <div id="errFirst"></div>
-                      </div> -->
-
-                      <div class="form-group">
-                        <label for="contact"><span class="req">* </span>Contact Number:
-                        </label>
-                        <input required type="text" name="contact" id="contact" [ngModel]="Customer.contact"
-                          class="form-control phone" maxlength="28" value="{{ item.contactNo }}" />
-                      </div>
-                    </fieldset>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary" (click)="updateCustomer(item)">
-                    Save changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          </td> 
+          <td><button (click)="  updateCustomer(item)" class="btn btn-primary">Edit</button></td> 
+          
         </tr>
-
-        <!-- </div> -->
+          
       </tbody>
     </table>
+
   </div>
 </main>
+
+
+
+
+
+ 
