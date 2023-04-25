@@ -12,21 +12,26 @@
 
 
             <div class="form-group">
-              <label for="Name"><span class="req">* </span> Name: </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.name" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter your firstname..." />
+              <label for="Name"><span class="req">* </span> manufacturer  Name: </label>
+              <input required type="text" [(ngModel)]="ProcureMedicines.manufacturerName" name="name" id="name"
+                class="form-control phone" maxlength="28" placeholder="Enter manufacturer name..." />
             </div>
             <div class="form-group">
-              <label for="contact"><span class="req">* </span>Contact Number:
-              </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.contact" name="contact" id="contact"
-                class="form-control phone" maxlength="28" placeholder="Enter your Phone number.." />
+              <label for="Name"><span class="req">* </span>medicine Name: </label>
+              <input required type="text" [(ngModel)]="ProcureMedicines.medicineName" name="name" id="name"
+                class="form-control phone" maxlength="28" placeholder="Enter medicine name.." />
             </div>
+            <div class="form-group">
+              <label for="Name"><span class="req">* </span>Delivary Date: </label>
+              <input required type="date" [(ngModel)]="ProcureMedicines.delivaryDate" name="date" id="date"
+                class="form-control phone" maxlength="28" placeholder="Enter delivary date.." />
+            </div>
+            
 
             <div class="form-group">
-              <label for="Name"><span class="req">* </span> Medicine Name: </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.medname" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter Medicine ID..." />
+              <label for="Name"><span class="req">* </span> Medicine Quantity </label>
+              <input required type="number" [(ngModel)]="ProcureMedicines.quantity" name="name" id="name"
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine quantity.." />
             </div>
             <div class="form-group mt-3 text-center">
               <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
@@ -49,18 +54,20 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Name</th>
-          <th>Contact Number</th>
+          <th>Manufacturer Name</th>
           <th>Medicine Name</th>
+          <th>Manufacturer Date</th>
+          <th>Quantity</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of procuremedicine; let i = index">
           <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.contact }}</td>
-          <td>{{ item.medname }}</td>
+          <td>{{ item.manufacturerName}}</td>
+          <td>{{ item.medicineName }}</td>
+          <td>{{ item.delivaryDate }}</td>
+          <td>{{item.quantity}}</td>
           <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
               Delete
@@ -88,17 +95,17 @@
 
 
                       <div class="form-group">
-                        <label for="Name"><span class="req">* </span> Name:
+                        <label for="Name"><span class="req">* </span>  Manufacturer Name:
                         </label>
-                        <input required type="text" name="name" id="name" [ngModel]="ProcureMedicines.name"
+                        <input required type="text" name="name" id="name" [ngModel]="ProcureMedicines.manufacturerName"
                           class="form-control phone" maxlength="28" />
                       </div>
 
                       <div class="form-group">
-                        <label for="contact"><span class="req">* </span>Contact Number:
+                        <label for="contact"><span class="req">* </span>Medicine Name:
                         </label>
-                        <input required type="text" name="contact" id="contact" [ngModel]="ProcureMedicines.contact"
-                          class="form-control phone" maxlength="28" value="{{ item.contact }}" />
+                        <input required type="text" name="contact" id="contact" [ngModel]="ProcureMedicines.medicineName"
+                          class="form-control phone" maxlength="28" value="{{ item.medicineName }}" />
                       </div>
                     </fieldset>
                   </form>

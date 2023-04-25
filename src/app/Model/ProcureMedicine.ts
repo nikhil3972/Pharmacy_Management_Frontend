@@ -1,7 +1,10 @@
 export class ProcureMedicine{
   id!:number;
-  contact!:string;
-  name!:string;
-  medname!:string
-   constructor(id:number,contact:string, name:string,medname:string){}
+  manufacturerName!:string;
+  medicineName!:string;
+  delivaryDate!:Date;
+  quantity!:number;
+  totalBill!:number;
+  
+   constructor( manufacturerName:string, medicineName:string,delivaryDate:Date,quantity:number){}
 }
