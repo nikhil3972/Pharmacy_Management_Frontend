@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Medicine } from 'src/app/Model/Medicine';
@@ -25,18 +26,26 @@ export class DashboardComponent {
     currentStock!:number
   showForm= false;
 
+  @ViewChild(MatPaginator)paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
 
 
   constructor(private medicineService : MedicineService){}
 
   ngOnInit(){
-    this.medicineService.getMedicine().subscribe(data =>
-      this.medicine = data);
+      this.getData();
+
+      // return this.medicine;
+  }
+  getData(){
+    this.medicineService.getMedicine().subscribe(data =>{
+      this.medicine = data;
 
       this.dataSource=new MatTableDataSource<Medicine>(this.medicine);
+      this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
-      // return this.medicine;
+
+    });
   }
   deleteMedicineData(item:  Medicine){
     this.medicineService.deleteMedicine(item.id).subscribe((resp) => {
