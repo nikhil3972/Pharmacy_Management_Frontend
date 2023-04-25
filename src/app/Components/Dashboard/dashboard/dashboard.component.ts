@@ -37,6 +37,8 @@ export class DashboardComponent {
   }
   openaddForm(){
     this.showForm=true;
+    this.clearForm();
+    this.formHeader="Add Medicine";
   }
   openForm(item:Medicine){
     this.showForm=true;
@@ -62,7 +64,7 @@ export class DashboardComponent {
       this.price=0,
       this.manufactureDate=new Date(0),
       this.expiryDate=new Date(0),
-      this.currentStock=100
+      this.currentStock=0
   }
   saveMedicine(){
     this.showForm =false;
