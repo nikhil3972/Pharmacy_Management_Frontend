@@ -19,7 +19,7 @@ export class CustomerComponent {
     Validators.required,
     Validators.email
   ]);
-  
+  formHeader ="Edit Customer details";
 
   bCus: boolean = true;
   bMed: boolean = false;
