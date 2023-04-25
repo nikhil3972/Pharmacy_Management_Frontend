@@ -2,7 +2,7 @@
 
 
   <div class="container border solid black ">
-    <div>
+    <!-- <div>
       <h2>Enter Sales Details</h2>
     </div>
     <div class="row pt-4">
@@ -34,8 +34,8 @@
           </fieldset>
         </form>
       </div>
-    </div>
-  </div>
+    </div>-->
+  </div> 
 
 
 
@@ -55,20 +55,29 @@
         <tr>
           <th>Id</th>
           <th>Customer Name</th>
-          <th>Date</th>
-          <th>Total_Cost</th>
-          <th>Action</th>
+          <th>Customer Contact</th>
+        <th>Medicine Name</th>
+    <th>Medicine price</th>
+        
+         <th>Action</th>
 
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of sales;">
+        <tr *ngFor="let item of customers;">
           <td>{{item.id}}</td>
-          <td>{{item.customername}}</td>
-          <td>{{item.date}}</td>
-          <td>{{item.total_cost}}</td>
-          <td><button class="btn btn-danger" (click)="deleteRecord(item.id)">Delete</button></td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.contact}}</td>
+          <td>{{item.medicineName}}</td>
+          <td>{{item.price}}</td>
+          
+          <td>
+            <button class="btn btn-danger" (click)="deleteRecord(item.id)">
+              Delete
+            </button>
+          </td>
         </tr>
+        
       </tbody>
     </table>
 

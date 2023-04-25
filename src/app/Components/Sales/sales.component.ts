@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sales } from 'src/app/Model/Sales';
+import { User } from 'src/app/Model/User';
+import { CustomerService } from 'src/app/Services/Customer/customer.service';
 import { SalesService } from 'src/app/Services/Sales/sales.service';
 
 @Component({
@@ -8,42 +10,50 @@ import { SalesService } from 'src/app/Services/Sales/sales.service';
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit{
-  sales!:any
-
+  sales!:any;
+  customers!: any;
+totalSale!:number;
+totalPrice!:number;
   sale:Sales =new Sales(0,"","",0);
-  constructor(private service:SalesService){}
+  Customer: User = new User("","","",0,"");
+  constructor(private service:SalesService,private customerService:CustomerService){}
 
 
 
   ngOnInit() {
-    this.displaySales();
-    this.displaySales();
+    this.display();
+    this.display();
   }
-  displaySales(){
-    this.sales=this.service.getSales().subscribe(data=>
-      this.sales=data);
-      return this.sales;
+
+  display(){
+    this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
+     return this.customers;
   }
+  // displaySales(){
+  //   this.sales=this.service.getSales().subscribe(data=>
+  //     this.sales=data);
+  //     return this.sales;
+  // }
   deleteRecord(id:number){
-    this.service.deleteData(id).subscribe(
+    this.customerService.deleteData(id).subscribe(
       (resp)=>{
         console.log(resp);
       }
     )
-    this.displaySales();
+    this.display();
   }
 
-  addSales(){
-    let resp = this.service.postMethod(this.sale);
-    resp.subscribe((data) => (this.sales = data));
+  // addSales(){
+  //   let resp = this.service.postMethod(this.sale);
+  //   resp.subscribe((data) => (this.sales = data));
 
-    this.displaySales();
-    this.displaySales();
-  }
+  //   this.displaySales();
+  //   this.displaySales();
+  // }
 
-  updateSales(user: Sales) {
-    this.service.updateData(user).subscribe((data) => {
-      console.log(data);
-    });
-  }
+  // updateSales(user: Sales) {
+  //   this.service.updateData(user).subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
 }

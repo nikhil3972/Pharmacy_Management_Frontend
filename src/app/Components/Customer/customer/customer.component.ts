@@ -52,14 +52,11 @@ export class CustomerComponent {
     this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
      return this.customers;
   }
-  // display() {
-  //   this.customerMedicine = this.customerService.getCustomerWithMedicine().subscribe((data) => this.customerMedicine = data);
-  //   return this.customerMedicine;
-  // }
-
+ 
   public addCustomer = async () => {
     let resp = await this.customerService.postMethod(this.Customer);
     resp.subscribe((data) => (this.customers = data));
+  
     this.display();
     this.display();
   };
