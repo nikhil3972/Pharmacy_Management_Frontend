@@ -2,14 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomerMedicine } from 'src/app/Model/CustomerMedicine';
 import { User } from 'src/app/Model/User';
+import { CostService } from '../cost.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
-  constructor(private http:HttpClient) { }
-  public getCustomers(){
+  constructor(private http:HttpClient,public costService:CostService) { }
+
+  users: User[] = [];
+  totalBill!:any;
+  public getCost(){
+    this.totalBill= this.http.get("http://localhost:8010/getCost");
+    return this.totalBill;
+  }
+
+public postCost(user:any){
+  return this.http.post("http://localhost:8010/insertTotalCost",user,{responseType:'text'as 'json'});
+}
+
+public getCustomers(){
     return this.http.get("http://localhost:8010/getAllOnlyCustomer");
   }
   public postMethod(user: User){
@@ -34,3 +47,7 @@ export class CustomerService {
   //   return this.http.post("http://localhost:8010/insertCustomer",user,{responseType:'text'as 'json'});
   // }
 }
+function getTotalCost() {
+  throw new Error('Function not implemented.');
+}
+

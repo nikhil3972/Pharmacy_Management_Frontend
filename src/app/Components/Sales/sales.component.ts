@@ -16,6 +16,10 @@ totalSale!:number;
 totalPrice!:number;
   sale:Sales =new Sales(0,"","",0);
   Customer: User = new User("","","",0,"");
+
+
+ 
+
   constructor(private service:SalesService,private customerService:CustomerService){}
 
 
@@ -34,6 +38,17 @@ totalPrice!:number;
   //     this.sales=data);
   //     return this.sales;
   // }
+
+
+  public calculateCost = async () =>{
+  
+    let resp = await this.customerService.postCost(this.customers);
+     resp.subscribe((data) => (this.customers = data));
+     alert(resp.toString);
+  
+   }
+
+
   deleteRecord(id:number){
     this.customerService.deleteData(id).subscribe(
       (resp)=>{

@@ -43,4 +43,5 @@ export class ProcureComponent {
       console.log(data);
     });
   }
+  
 }

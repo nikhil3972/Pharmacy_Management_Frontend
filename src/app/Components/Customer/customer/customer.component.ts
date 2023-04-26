@@ -5,6 +5,7 @@ import { Medicine } from 'src/app/Model/Medicine';
 import { User } from 'src/app/Model/User';
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
+import { CostService } from 'src/app/Services/cost.service';
 
 
 
@@ -32,13 +33,14 @@ export class CustomerComponent {
 
   searchTerm!: string;
   users!: any[];
-
+  totalPrice!:number;
+  
   Customer: User = new User("","","",0,"");
   // Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
   
 
   // CustomerMedicine: CustomerMedicine = new CustomerMedicine(0, "", "", "", "", "", 10.05);
-  constructor(public customerService: CustomerService, public medicineService: MedicineService) { }
+  constructor(public customerService: CustomerService, public medicineService: MedicineService,public costService:CostService) { }
 
 
 
@@ -47,19 +49,40 @@ export class CustomerComponent {
     this.display();
   }
 
+  calculatePrice(){
+  for(let i=0;i<this.customers.length;i++){
+    this.totalPrice += this.customers[i].price;
+  }
+  // return this.totalPrice;
+
+}
 
   display(){
     this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
      return this.customers;
   }
- 
+ public calculateCost = async () =>{
+  // let resp = await this.customerService.postCost(this.customers);
+  // resp.subscribe((data) => (this.customers = data));
+  let resp = await this.customerService.postCost(this.customers);
+   resp.subscribe((data) => (this.customers = data));
+
+ }
+
+//  getPrice(){
+//   let resp= await this.customerService.
+//  }
   public addCustomer = async () => {
     let resp = await this.customerService.postMethod(this.Customer);
     resp.subscribe((data) => (this.customers = data));
-  
+    this.costService.items.push(this.customers);
     this.display();
     this.display();
   };
+
+
+
+ 
 
   // public getCustomerById(searchId: number) {
   //   this.customerService.deleteData(searchId).subscribe((resp) => {
