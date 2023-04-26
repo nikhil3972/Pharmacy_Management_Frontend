@@ -14,15 +14,27 @@
 
 
             <div class="form-group">
+              <label for="info"><span class="req">* </span>Id:
+              </label>
+              <input required type="number" [(ngModel)]="disease.id" name="name" id="lastname"
+                class="form-control phone" maxlength="28" placeholder="Enter Id..." />
+            </div>
+            <div class="form-group">
               <label for="Name"><span class="req">* </span>Disease Name: </label>
               <input required type="text" [(ngModel)]=" disease.name" name="name" id="diseaseName"
                 class="form-control phone" maxlength="28" placeholder="Disease Name..." />
             </div>
             <div class="form-group">
-              <label for="info"><span class="req">* </span>Info:
+              <label for="info"><span class="req">* </span>Disease Info:
               </label>
               <input required type="text" [(ngModel)]="disease.info" name="name" id="lastname"
                 class="form-control phone" maxlength="28" placeholder="Enter Info..." />
+            </div>
+            <div class="form-group">
+              <label for="info"><span class="req">* </span>Medicine:
+              </label>
+              <input required type="text" [(ngModel)]="disease.med" name="name" id="lastname"
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine..." />
             </div>
 
 
@@ -58,6 +70,7 @@
           <th>Id</th>
           <th>Disease Name</th>
           <th>Disease Info</th>
+          <th>Medicine</th>
           <th>Action</th>
 
         </tr>
@@ -70,7 +83,7 @@
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.info }}</td>
-
+          <td>{{item.med}}</td>
 
 
           <td>
@@ -79,11 +92,11 @@
             </button>
           </td>
 
-          <td>
+          <!-- <td>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Edit
             </button>
-          </td>
+          </td> -->
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">

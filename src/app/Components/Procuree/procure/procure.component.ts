@@ -11,7 +11,7 @@ import { ProcureMedicine } from 'src/app/Model/ProcureMedicine';
 export class ProcureComponent {
   manufacturers!:any;
   procuremedicine!:any;
-  ProcureMedicines:ProcureMedicine = new ProcureMedicine(1,"","","");
+  ProcureMedicines:ProcureMedicine = new ProcureMedicine("","",new Date("Fri Dec 08 2019 "),0);
   constructor(private procureService:ProcureService){}
   ngOnInit(){
 
@@ -20,13 +20,13 @@ export class ProcureComponent {
 
   }
   displayManufacturers(){
-    this.manufacturers=this.procureService.getSellers().subscribe(data=>
-      this.manufacturers=data);
-      return this.manufacturers;
+    this.procuremedicine=this.procureService.getSellers().subscribe(data=>
+      this.procuremedicine=data);
+      return this.procuremedicine;
   }
   public addManufacturer = async () => {
-    let resp = await this.procureService.postMethod(this.manufacturers);
-    resp.subscribe((data) => (this.manufacturers = data));
+    let resp = await this.procureService.postMethod(this.ProcureMedicines);
+    resp.subscribe((data) => (this.procuremedicine = data));
 
     this.displayManufacturers();
     this.displayManufacturers();
@@ -38,7 +38,7 @@ export class ProcureComponent {
     this.displayManufacturers();
     this.displayManufacturers();
   }
-  updateManufacturer(user: Seller) {
+  updateManufacturer(user: ProcureMedicine) {
     this.procureService.updateData(user).subscribe((data) => {
       console.log(data);
     });

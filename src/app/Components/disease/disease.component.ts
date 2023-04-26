@@ -9,7 +9,7 @@ import { DiseaseService } from 'src/app/Services/Disease/disease.service';
 })
 export class DiseaseComponent {
 diseases!:any;
-disease:Disease=new Disease(0,"","");
+disease:Disease=new Disease(0,"","","");
 constructor(private diseaseService:DiseaseService){}
 ngOnInit() {
 
