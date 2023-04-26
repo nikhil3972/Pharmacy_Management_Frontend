@@ -34,9 +34,9 @@
                     class="form-control phone" maxlength="28" placeholder="Enter your lastname..." />
                 </div>
 
-              
-                 
-        
+
+
+
 
                 <div class="form-group">
                   <label for="contact"><span class="req">* </span>Medicine Name
@@ -44,7 +44,7 @@
                   <input required type="text" [(ngModel)]="Customer.medicineName" name="contact" id="contact"
                     class="form-control phone" maxlength="28" placeholder="Enter medicine name.." />
                 </div>
-                
+
                 <div class="form-group">
                   <label for="contact"><span class="req">* </span>Medicine price
                   </label>
@@ -61,7 +61,7 @@
                   <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
                     (click)="addCustomer()" />
                 </div>
-                
+
               </fieldset>
             </form>
             <script src="http://code.amgularjs.org/1.2.3/angular.min.js"></script>
@@ -71,14 +71,14 @@
       </div>
       </main>
 
-     
+
       <!-- <ng-template #displayMedicine>
         <div class="row">
           <div class="col-md-12">
             <form>
               <fieldset>
 
-               
+
 
                 <div class="form-group">
                   <label for="Name"><span class="req">* </span> Name: </label>
@@ -111,14 +111,14 @@
 
   <main style="margin-top: 58px">
     <div class="container pt-4">
-  
+
     <table class="table table-striped text-center">
       <thead>
         <tr>
           <th>Id</th>
           <th>FirstName</th>
           <th>LastName</th>
-         
+
           <th>Contact Number</th>
           <th>Medicine Name</th>
           <th>Medicine Price</th>
@@ -130,26 +130,62 @@
           <td>{{ item.id }}</td>
           <td>{{ item.firstName }}</td>
           <td>{{ item.lastName }}</td>
-      
+
           <td>{{ item.contact}}</td>
           <td>{{ item.medicineName }}</td>
           <td>{{ item.price }}</td>
-        
+
  <td>
             <button class="btn btn-danger" (click)="deleteData(item)">
               Delete
             </button>
-          </td> 
-          <td><button (click)="  updateCustomer(item)" class="btn btn-primary">Edit</button></td> 
-          
+          </td>
+          <td><button (click)=" openForm(item)" class="btn btn-primary">Edit</button></td>
+
         </tr>
-          
+
       </tbody>
     </table>
 
   </div>
 </main>
 
+<main style="margin-top: 58px" *ngIf="showForm">
+  <div class="container pt-4" >
+  <div class="form-wrapper">
+    <div class="medicineForm">
+      <h2 class="text-info text-center">{{formHeader}}</h2>
+      <div class="group">
+          <label for="firstname">First Name</label>
+          <input type="text" class="form-control" [(ngModel)]="firstName" name="firstname" required minlength="5">
+      </div>
+      <div class="group">
+        <label for="medicine_desc">Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName" required minlength="5">
+    </div>
+    <div class="group">
+      <label for="medicine_name">Med name</label>
+      <input type="text" class="form-control" [(ngModel)]="medicineName" name="medicineName" required minlength="5">
+  </div>
+      <div class="group">
+          <label for="medicine_price">Price</label>
+          <input type="number" class="form-control" [(ngModel)]="price" name="price" required min="1000">
+      </div>
+      <div class="group">
+          <label for="medicine_mfg">Contact</label>
+          <input type="text" class="form-control" [(ngModel)]="contact" name="contact" required min="1">
+      </div>
+
+
+      <div class="action">
+          <button class="btn btn-primary save" (click)="saveCustomer()" >Save Changes</button>
+          <button class="btn btn-danger cancel" (click)="closeForm()">Cancel</button>
+      </div>
+  </div>
+
+  </div>
+  </div>
+  </main>
 
 
 
@@ -157,4 +193,4 @@
 
 
 
- 
+
