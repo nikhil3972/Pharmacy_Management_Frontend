@@ -12,10 +12,10 @@ export class CustomerService {
   constructor(private http:HttpClient,public costService:CostService) { }
 
   users: User[] = [];
-  totalBill!:any;
+  totalBill!:number;
   public getCost(){
-    this.totalBill= this.http.get("http://localhost:8010/getCost");
-    return this.totalBill;
+    return this.http.get("http://localhost:8010/getTotalCost");
+
   }
 
 public postCost(user:any){

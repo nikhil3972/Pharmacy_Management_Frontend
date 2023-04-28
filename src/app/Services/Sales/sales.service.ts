@@ -9,8 +9,8 @@ export class SalesService {
 
   constructor(private http:HttpClient) { }
 
-  getSales(){
-    return this.http.get("http://localhost:8010/getAllSales");
+  getTotalCost(){
+    return this.http.get("http://localhost:8010/getTotalCost");
   }
   public postMethod(user: Sales){
     return this.http.post("http://localhost:8010/insertSales",user,{responseType:'text'as 'json'});

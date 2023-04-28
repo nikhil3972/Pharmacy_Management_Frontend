@@ -2,7 +2,7 @@
 
 
   <div class="container border solid black ">
-  
+
     <!-- <div>
       <h2>Enter Sales Details</h2>
     </div>
@@ -36,7 +36,7 @@
         </form>
       </div>
     </div>-->
-  </div> 
+  </div>
 
 
 
@@ -51,9 +51,9 @@
       <h2>Sales Details : </h2>
     </div>
     <div style="text-align: center;">
-    <h3>Total Sales</h3>
-  
-    <button  (click)="calculateCost()" class="btn btn-primary">click</button>
+    <h3>Total Sales: {{totalPrice}}</h3>
+
+    <button  (click)="displayCost()" class="btn btn-primary">click</button>
     </div>
     <br>
     <table class="table table-striped">
@@ -64,7 +64,7 @@
           <th>Customer Contact</th>
         <th>Medicine Name</th>
     <th>Medicine price</th>
-        
+
          <th>Action</th>
 
         </tr>
@@ -76,14 +76,14 @@
           <td>{{item.contact}}</td>
           <td>{{item.medicineName}}</td>
           <td>{{item.price}}</td>
-          
+
           <td>
             <button class="btn btn-danger" (click)="deleteRecord(item.id)">
               Delete
             </button>
           </td>
         </tr>
-        
+
       </tbody>
     </table>
 

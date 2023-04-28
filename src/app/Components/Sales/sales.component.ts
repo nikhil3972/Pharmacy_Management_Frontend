@@ -13,12 +13,12 @@ export class SalesComponent implements OnInit{
   sales!:any;
   customers!: any;
 totalSale!:number;
-totalPrice!:number;
+totalPrice!:any;
   sale:Sales =new Sales(0,"","",0);
   Customer: User = new User("","","",0,"");
 
 
- 
+
 
   constructor(private service:SalesService,private customerService:CustomerService){}
 
@@ -33,6 +33,10 @@ totalPrice!:number;
     this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
      return this.customers;
   }
+  displayCost(){
+    this.totalPrice = this.customerService.getCost().subscribe((data) => this.totalPrice = data);
+     return this.totalPrice;
+  }
   // displaySales(){
   //   this.sales=this.service.getSales().subscribe(data=>
   //     this.sales=data);
@@ -40,13 +44,13 @@ totalPrice!:number;
   // }
 
 
-  public calculateCost = async () =>{
-  
-    let resp = await this.customerService.postCost(this.customers);
-     resp.subscribe((data) => (this.customers = data));
-     alert(resp.toString);
-  
-   }
+  // public calculateCost = async () =>{
+
+  //   let resp = await this.customerService.postCost(this.customers);
+  //    resp.subscribe((data) => (this.customers = data));
+  //    alert(resp.toString());
+
+  //  }
 
 
   deleteRecord(id:number){
