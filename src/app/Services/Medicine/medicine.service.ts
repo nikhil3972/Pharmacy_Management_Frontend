@@ -10,19 +10,22 @@ export class MedicineService {
   constructor(private http:HttpClient) { }
 
   public getMedicine(){
-    return this.http.get("http://localhost:8010/getAllMedicine");
+    return this.http.get("http://localhost:8999/medicine/getAllMedicine");
   }
   public postMedicine(body: any){
-    return this.http.post("http://localhost:8010/insertMedicine",body,{responseType:'text'as 'json'});
+    return this.http.post("http://localhost:8999/medicine/insertMedicine",body,{responseType:'text'as 'json'});
   }
   public deleteMedicine(id:number){
-    return this.http.delete("http://localhost:8010/deleteMedicine/"+id);
+    return this.http.delete("http://localhost:8999/medicine/deleteMedicine/"+id);
   }
   public putMedicine(body: any){
-    return this.http.put("http://localhost:8010/updateMedicine",body)
+    return this.http.put("http://localhost:8999/medicine/updateMedicine",body)
+  }
+  public getMedicineById(id:number){
+    return this.http.get("http://localhost:8999/medicine/customer/"+id);
   }
 
   public getMedicineSorted(){
-    return this.http.get("http://localhost:8010/getAllMedicineSorted");
+    return this.http.get("http://localhost:8999/getAllMedicineSorted");
   }
 }

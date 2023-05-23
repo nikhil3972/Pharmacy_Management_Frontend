@@ -14,30 +14,30 @@ export class CustomerService {
   users: User[] = [];
   totalBill!:number;
   public getCost(){
-    return this.http.get("http://localhost:8010/getTotalCost");
+    return this.http.get("http://localhost:8999/getTotalCost");
 
   }
 
 public postCost(user:any){
-  return this.http.post("http://localhost:8010/insertTotalCost",user,{responseType:'text'as 'json'});
+  return this.http.post("http://localhost:8999/insertTotalCost",user,{responseType:'text'as 'json'});
 }
 
 public getCustomers(){
-    return this.http.get("http://localhost:8010/getAllOnlyCustomer");
+    return this.http.get("http://localhost:8999/customer/getAllCustomer");
   }
   public postMethod(body: any){
-    return this.http.post("http://localhost:8010/insertOnlyCustomer",body,{responseType:'text'as 'json'});
+    return this.http.post("http://localhost:8999/customer/insertCustomer",body,{responseType:'text'as 'json'});
   }
   public deleteData(id:number){
 
-    return this.http.delete("http://localhost:8010/deleteOnlyCustomer/"+id);
+    return this.http.delete("http://localhost:8999/customer/deleteCustomer/"+id);
   }
   // public updateData(user:User){
   //   alert("update");
   //   return this.http.put("localhost:8010/updateOnlyCustomer",user);
   // }
   public putCustomer(body: any){
-    return this.http.put("http://localhost:8010/updateOnlyCustomer",body)
+    return this.http.put("http://localhost:8999/customer/updateCustomer",body,{responseType:'text'as 'json'})
   }
   // public getCustomerById(id:number){
   //   return this.http.get("http://localhost:8010/getCustomerById/"+id);

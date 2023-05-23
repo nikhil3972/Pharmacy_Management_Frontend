@@ -36,11 +36,11 @@ export class CustomerComponent {
   users!: any[];
 
   totalPrice!:number;
-  
+
   Customerr: User = new User("","","",0,"");
 
 
-  Customer: onlyCustomer = new onlyCustomer(0,"","",0,"",0);
+  Customer: onlyCustomer = new onlyCustomer(0,"","",0,0);
 
   // Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
 
@@ -51,13 +51,15 @@ export class CustomerComponent {
 
 
   showForm= false;
+  showBill=false;
+  showFormMed=false;
   id!:number;
     firstName!:string;
     lastName!:string;
     medicineName!:string;
     price!:number;
     contact!:string
- 
+
 
 
 
@@ -87,20 +89,24 @@ export class CustomerComponent {
 
  }
 
-//  getPrice(){
-//   let resp= await this.customerService.
-//  }
+
   public addCustomer = async () => {
     let resp = await this.customerService.postMethod(this.Customerr);
     resp.subscribe((data) => (this.customers = data));
     this.costService.items.push(this.customers);
   }
+  openBill(){
+    this.showBill=true;
+  }
+  closeBill(){
+    this.showBill=false;
+  }
   openForm(item:onlyCustomer){
     this.showForm=true;
       this.firstName=item.firstName;
       this.lastName=item.lastName,
-      this.medicineName=item.medicineName,
-      this.price=item.price,
+      // this.medicineName=item.medicineName,
+      // this.price=item.price,
       this.contact=item.contact,
       this.id =item.id;
       this.formHeader = "Edit Customer"
@@ -121,8 +127,8 @@ export class CustomerComponent {
     let  body = {
       firstName:this.firstName,
       lastName:this.lastName,
-      price:this.price,
-      medicineName:this.medicineName,
+      // price:this.price,
+      // medicineName:this.medicineName,
       contact:this.contact,
       id:this.id
     }
@@ -142,9 +148,15 @@ export class CustomerComponent {
     }
     this.ngOnInit();
     this.ngOnInit();
-    this.ngOnInit();
-   this.ngOnInit();
-
+  }
+  getMedicines(id:number){
+    this.formHeader="Medicine List"
+    this.showFormMed=true;
+    this.medicine = this.medicineService.getMedicineById(id).subscribe((data) => this.medicine = data);
+     return this.medicine;
+  }
+  closeFormMed(){
+    this.showFormMed=false;
   }
 
 
@@ -158,7 +170,7 @@ export class CustomerComponent {
 
 
 
- 
+
 
   // public getCustomerById(searchId: number) {
   //   this.customerService.deleteData(searchId).subscribe((resp) => {
