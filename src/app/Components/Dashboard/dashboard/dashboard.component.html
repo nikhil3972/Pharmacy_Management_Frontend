@@ -125,6 +125,10 @@
   <div class="medicineForm">
     <h2 class="text-info text-center">{{formHeader}}</h2>
     <div class="group">
+      <label for="medicine_Id">Medicine Id</label>
+      <input type="number" class="form-control" [(ngModel)]="medicineId" name="mid" required minlength="5">
+  </div>
+    <div class="group">
         <label for="medicine_name">Name</label>
         <input type="text" class="form-control" [(ngModel)]="medicineName" name="mname" required minlength="5">
     </div>
@@ -152,7 +156,10 @@
       <label for="stock">Stock</label>
       <input type="number" class="form-control" [(ngModel)]="currentStock" name="Current_Stock" required min="1">
   </div>
-
+  <div class="group">
+    <label for="customerId">customerId</label>
+    <input type="number" class="form-control" [(ngModel)]="customerId" name="customerId" required min="1">
+</div>
     <div class="action">
         <button class="btn btn-primary save" (click)="saveMedicine()" >Save Changes</button>
         <button class="btn btn-danger cancel" (click)="closeForm()">Cancel</button>

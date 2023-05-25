@@ -4,6 +4,7 @@ import { CustomerMedicine } from 'src/app/Model/CustomerMedicine';
 import { Medicine } from 'src/app/Model/Medicine';
 import { User } from 'src/app/Model/User';
 import {onlyCustomer} from 'src/app/Model/onlyCustomer'
+
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 import { CostService } from 'src/app/Services/cost.service';
@@ -29,18 +30,31 @@ export class CustomerComponent {
   customers!: any;
   medicine!: any;
   searchId!: number;
+  arrayMedicine!: Medicine[];
 
   customerMedicine !: any;
-
+medicineArray:Medicine[] = [{
+  "id":3,
+  "medicineName" : "xyzabs",
+  "description" : "This is vicks",
+  "dosage" : "Viral", 
+  "price" : 16.34,
+  "manufactureDate" : new Date(),
+  "expiryDate" : new Date(),
+  "currentStock" : 70,
+  "customerId":2
+}
+];
   searchTerm!: string;
   users!: any[];
 
   totalPrice!:number;
 
-  Customerr: User = new User("","","",0,"");
+  Customerr: User = new User(0,"","","",0, new Date("Fri Dec 08 2019 "));
+  
 
 
-  Customer: onlyCustomer = new onlyCustomer(0,"","",0,0);
+  // Customer: onlyCustomer = new onlyCustomer(0,"","",0,"",,new Date("Fri Dec 08 2019 "));
 
   // Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
 
@@ -58,10 +72,13 @@ export class CustomerComponent {
     lastName!:string;
     medicineName!:string;
     price!:number;
-    contact!:string
+    contact!:number;
+  emails!:string;
+  dob!:Date;
 
+medId!:number;
 
-
+medicineData!:any;
 
   ngOnInit() {
     this.display();
@@ -108,6 +125,7 @@ export class CustomerComponent {
       // this.medicineName=item.medicineName,
       // this.price=item.price,
       this.contact=item.contact,
+
       this.id =item.id;
       this.formHeader = "Edit Customer"
   }
@@ -120,16 +138,19 @@ export class CustomerComponent {
       this.lastName="",
       this.medicineName="",
       this.price=0,
-      this.contact=""
+      this.contact=0
   }
   saveCustomer(){
     this.showForm =false;
+    console.log('medicineArray:', this.medicineArray);
     let  body = {
       firstName:this.firstName,
       lastName:this.lastName,
-      // price:this.price,
-      // medicineName:this.medicineName,
+      
       contact:this.contact,
+      emails:this.emails,
+    arrayMedicine:this.arrayMedicine.push(this.medicineData),
+      dob:this.dob,
       id:this.id
     }
     if(this.id){
@@ -157,32 +178,13 @@ export class CustomerComponent {
   }
   closeFormMed(){
     this.showFormMed=false;
-  }
+  } 
+ 
+getMedicineById(medId:number){
+  this.medicineData = this.medicineService.getMedicineById(medId).subscribe((data) => this.medicineData = data);
+  return this.medicineData;
+}
 
-
-  // public addCustomer = async () => {
-  //   let resp = await this.customerService.postMethod(this.Customer);
-  //   resp.subscribe((data) => (this.customers = data));
-
-  //   this.display();
-  //   this.display();
-  // };
-
-
-
-
-
-  // public getCustomerById(searchId: number) {
-  //   this.customerService.deleteData(searchId).subscribe((resp) => {
-  //     console.log(resp);
-  //   });
-  //   this.display();
-  //   this.display();
-  // }
-
-  // public addCustomer = async () => {
-  //   this.bCus = false;
-  // };
   deleteData(item: onlyCustomer) {
     this.customerService.deleteData(item.id).subscribe((resp) => {
       console.log(resp);
@@ -191,20 +193,10 @@ export class CustomerComponent {
     this.display();
   }
 
+  addMedicineCustomer(){
 
+  }
 
-  // public getMedicineData() {
-  //   this.medicine = this.medicineService.getMedicine().subscribe((data) => (this.medicine = data));
-  // }
-
-  // public addMedicine = async () => {
-  //   this.bCus = false;
-  //   let resp = await this.medicineService.postMedicine(this.Medicine);
-  //   resp.subscribe((data) => (this.customers = data));
-
-  //   this.display();
-  //   this.display();
-  // };
 
 
 

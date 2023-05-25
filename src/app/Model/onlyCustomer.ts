@@ -1,10 +1,15 @@
+import { Medicine } from "./Medicine";
+
 export class onlyCustomer{
    id!:number;
   firstName!:string;
   lastName!:string;
-  contact!:string;
+  contact!:number;
   //medicineName!:string;
-  price!:number;
+  email!:string;
+  medicine!: Medicine[];
+  dob!:Date;
 
-   constructor(Id:number,firstName:string,lastName:string,contactNo:number,price:number){}
+
+   constructor(Id:number,firstName:string,lastName:string,contactNo:number,email:string,medicine:Medicine,dob:Date){}
 }

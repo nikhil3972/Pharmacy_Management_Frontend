@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sales } from 'src/app/Model/Sales';
 import { User } from 'src/app/Model/User';
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
+import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
 import { SalesService } from 'src/app/Services/Sales/sales.service';
 
 @Component({
@@ -15,24 +16,33 @@ export class SalesComponent implements OnInit{
 totalSale!:number;
 totalPrice!:any;
   sale:Sales =new Sales(0,"","",0);
-  Customer: User = new User("","","",0,"");
+  Customer: User = new User(0,"","","",0, new Date("Fri Dec 08 2019 "));
+  medicine!: any;
+  medicineName!:string;
+  price!:number;
 
 
-
-
-  constructor(private service:SalesService,private customerService:CustomerService){}
+  constructor(private service:SalesService,private customerService:CustomerService,private medicineService:MedicineService){}
 
 
 
   ngOnInit() {
+   
+    this.displayMedicine();
     this.display();
     this.display();
+    
   }
 
   display(){
     this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
      return this.customers;
+     
   }
+ displayMedicine(){
+  this.medicine = this.medicineService.getMedicine().subscribe((data) => this.medicine = data);
+  return this.medicine;
+ }
   displayCost(){
     this.totalPrice = this.customerService.getCost().subscribe((data) => this.totalPrice = data);
      return this.totalPrice;

@@ -23,7 +23,9 @@ export class DashboardComponent {
     price!:number;
     manufactureDate!:Date;
     expiryDate!:Date;
-    currentStock!:number
+    currentStock!:number;
+    customerId!:number;
+    medicineId!:number;
   showForm= false;
 
   @ViewChild(MatPaginator)paginator!:MatPaginator;
@@ -87,6 +89,7 @@ export class DashboardComponent {
   saveMedicine(){
     this.showForm =false;
     let  body = {
+      medicineId:this.medicineId,
       medicineName:this.medicineName,
       description:this.description,
       price:this.price,
@@ -94,22 +97,31 @@ export class DashboardComponent {
       manufactureDate:this.manufactureDate,
       expiryDate:this.expiryDate,
       currentStock:this.currentStock,
-      id:this.id
+     customerId:this.customerId
     }
-    if(this.id){
-      body['id'] =this.id;
-      this.medicineService.putMedicine(body).subscribe(
-        (res)=>{
-          this.medicine()
-        },
-      )
-    }else{
-      this.medicineService.postMedicine(body).subscribe(
-        (res)=>{
-          this.medicine()
-        },
-      )
-    }
+    this.medicineService.postMedicine(body).subscribe(
+          (res)=>{
+            this.medicine()
+          },
+        )
+
+    // if(this.id){
+    //   body['id'] =this.id;
+    //   this.medicineService.putMedicine(body).subscribe(
+    //     (res)=>{
+    //       this.medicine()
+    //     },
+    //   )
+    // }else{
+
+    //   this.medicineService.postMedicine(body).subscribe(
+    //     (res)=>{
+    //       this.medicine()
+    //     },
+    //   )
+    // }
+
+
     this.ngOnInit();
     this.ngOnInit();
     this.ngOnInit();

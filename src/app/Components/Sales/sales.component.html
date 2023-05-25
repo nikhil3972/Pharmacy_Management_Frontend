@@ -59,9 +59,10 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Id</th>
+        
           <th>Customer Name</th>
           <th>Customer Contact</th>
+          <th>Id</th>
         <th>Medicine Name</th>
     <th>Medicine price</th>
 
@@ -70,19 +71,61 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of customers;">
-          <td>{{item.id}}</td>
-          <td>{{item.firstName}}</td>
-          <td>{{item.contact}}</td>
-          <td>{{item.medicineName}}</td>
-          <td>{{item.price}}</td>
+        <!-- <tr *ngFor=" let it of medicine  let i of customers" >
+        
+          <td>{{i.id}}</td>
+          <td>{{i.firstName}}</td>
+          <td>{{i.contact}}</td>
+          <td>{{it.medicineName}}</td>
+          <td>{{it.price}}</td>
+           <td>{{item.medicine.medicineName}}</td> -->
+          <!-- <td>{{item.medicine.price}}</td> 
 
           <td>
-            <button class="btn btn-danger" (click)="deleteRecord(item.id)">
+            <button class="btn btn-danger" (click)="deleteRecord(it.id)">
               Delete
             </button>
           </td>
+        </tr> -->
+
+        <tr *ngFor="let customer of customers">
+          
+          <td>{{customer.firstName}}</td>
+          <td>{{customer.contact}}</td>
+          <td>
+            <table>
+              <tr *ngFor="let item of medicine">
+
+                <td>{{item.id}}</td>
+                <!-- <td>{{item.price}}</td> -->
+              </tr>
+            </table>
+          </td>
+
+          <td>
+            <table>
+              <tr *ngFor="let item of medicine">
+
+                <td>{{item.medicineName}}</td>
+                <!-- <td>{{item.price}}</td> -->
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr *ngFor="let item of medicine">
+                <!-- <td>{{item.medicineName}}</td> -->
+                <td>{{item.price}}</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteRecord(customer.id)">
+              Delete
+            </button>
+            </td>
         </tr>
+        
 
       </tbody>
     </table>
