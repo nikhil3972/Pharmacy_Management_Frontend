@@ -30,31 +30,28 @@ export class CustomerComponent {
   customers!: any;
   medicine!: any;
   searchId!: number;
-  arrayMedicine!: Medicine[];
+  medicineArray: Medicine[] = [];
+
 
   customerMedicine !: any;
-medicineArray:Medicine[] = [{
-  "id":3,
-  "medicineName" : "xyzabs",
-  "description" : "This is vicks",
-  "dosage" : "Viral", 
-  "price" : 16.34,
-  "manufactureDate" : new Date(),
-  "expiryDate" : new Date(),
-  "currentStock" : 70,
-  "customerId":2
-}
-];
+
   searchTerm!: string;
   users!: any[];
 
   totalPrice!:number;
 
-  Customerr: User = new User(0,"","","",0, new Date("Fri Dec 08 2019 "));
+//For Date conversion
+ originalDate = new Date("Sun Dec 08 2019 00:00:00 GMT+0530 (India Standard Time)");
+ formattedDate = this.originalDate.toISOString().split('T')[0];
+
+ // Output: "2019-12-08"
+
+ 
   
+  medicineForConstructor = new Medicine( 0,"aishManisha","This is vicks","Viral", 16.34,new Date("1990-01-01"),new Date("2024-01-01"),70,0);
+  Customerr: User = new User(0,"","",0,"" ,this.medicineForConstructor,new Date("Fri Dec 08 2019 "));
 
-
-  // Customer: onlyCustomer = new onlyCustomer(0,"","",0,"",,new Date("Fri Dec 08 2019 "));
+ Customer: onlyCustomer = new onlyCustomer(0,"","",0,"",this.medicineForConstructor,new Date("Fri Dec 08 2019 "));
 
   // Medicine: Medicine = new Medicine(0, "", "", "", 0, new Date("Fri Dec 08 2019 "), new Date("Fri Dec 08 2019 "), 0);
 
@@ -107,11 +104,24 @@ medicineData!:any;
  }
 
 
-  public addCustomer = async () => {
-    let resp = await this.customerService.postMethod(this.Customerr);
-    resp.subscribe((data) => (this.customers = data));
-    this.costService.items.push(this.customers);
-  }
+//   public addCustomer = async (mediId:number) => {
+//     this.getMedicineById(mediId);
+//     this.medicineArray.push(this.medicineData);
+//     this.Customerr.medicineArray=this.medicineArray;
+//     let resp = await this.customerService.postMethod(this.Customerr);
+//     resp.subscribe((data) => (this.customers = data));
+//     this.costService.items.push(this.customers);
+// }
+
+
+public addCustomer = async (mediId: number) => {
+  this.getMedicineById(mediId);
+  this.Customerr.medicineArray = [this.medicineData]; // Initialize as array and assign medicineData
+  let resp = await this.customerService.postMethod(this.Customerr);
+  resp.subscribe((data) => (this.customers = data));
+  this.costService.items.push(this.customers);
+}
+
   openBill(){
     this.showBill=true;
   }
@@ -142,14 +152,14 @@ medicineData!:any;
   }
   saveCustomer(){
     this.showForm =false;
-    console.log('medicineArray:', this.medicineArray);
+  
     let  body = {
       firstName:this.firstName,
       lastName:this.lastName,
       
       contact:this.contact,
       emails:this.emails,
-    arrayMedicine:this.arrayMedicine.push(this.medicineData),
+    medicineArray:this.medicineArray.push(this.medicineData),
       dob:this.dob,
       id:this.id
     }

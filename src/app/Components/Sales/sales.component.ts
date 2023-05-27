@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Medicine } from 'src/app/Model/Medicine';
 import { Sales } from 'src/app/Model/Sales';
 import { User } from 'src/app/Model/User';
 import { CustomerService } from 'src/app/Services/Customer/customer.service';
@@ -16,7 +17,8 @@ export class SalesComponent implements OnInit{
 totalSale!:number;
 totalPrice!:any;
   sale:Sales =new Sales(0,"","",0);
-  Customer: User = new User(0,"","","",0, new Date("Fri Dec 08 2019 "));
+  medicineForConstructor = new Medicine( 0,"aishManisha","This is vicks","Viral", 16.34,new Date("1990-01-01"),new Date("2024-01-01"),70,0);
+  Customer: User = new User(0,"","",0,"",this.medicineForConstructor, new Date("Fri Dec 08 2019 "));
   medicine!: any;
   medicineName!:string;
   price!:number;

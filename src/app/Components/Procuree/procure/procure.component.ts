@@ -29,7 +29,7 @@ export class ProcureComponent {
     resp.subscribe((data) => (this.procuremedicine = data));
 
     this.displayManufacturers();
-    this.displayManufacturers();
+    // this.displayManufacturers();
   };
   deleteData(item: Seller) {
     this.procureService.deleteData(item.id).subscribe((resp) => {
