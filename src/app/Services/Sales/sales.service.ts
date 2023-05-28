@@ -9,17 +9,22 @@ export class SalesService {
 
   constructor(private http:HttpClient) { }
 
-  getTotalCost(){
-    return this.http.get("http://localhost:8010/getTotalCost");
+  getSale(){
+    return this.http.get("http://localhost:8020/getAllSales");
   }
-  public postMethod(user: Sales){
-    return this.http.post("http://localhost:8010/insertSales",user,{responseType:'text'as 'json'});
+  getSaleByDate(date:Date){
+    return this.http.get("http://localhost:8020/getSaleByDate/"+date);
   }
-  public deleteData(id:number){
-    return this.http.delete("http://localhost:8010/deleteSales/"+id);
+  public postSale(user: Sales){
+    return this.http.post("http://localhost:8020/insertSale",user,{responseType:'text'as 'json'});
   }
-  public updateData(user:Sales){
+  public deleteSale(id:number){
+    return this.http.delete("http://localhost:8020/deleteSale/"+id);
+  }
+  public updateSale(user:Sales){
     alert("update");
-    return this.http.put("http://localhost:8010/updateSales",user);
+    return this.http.put("http://localhost:8020/updateSales",user);
   }
+
+  
 }

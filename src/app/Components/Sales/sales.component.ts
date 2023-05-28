@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Medicine } from 'src/app/Model/Medicine';
+import { FormControl, FormGroup } from '@angular/forms';
+
 import { Sales } from 'src/app/Model/Sales';
-import { User } from 'src/app/Model/User';
-import { CustomerService } from 'src/app/Services/Customer/customer.service';
-import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
+
+
+
 import { SalesService } from 'src/app/Services/Sales/sales.service';
 
 @Component({
@@ -12,79 +13,135 @@ import { SalesService } from 'src/app/Services/Sales/sales.service';
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit{
-  sales!:any;
-  customers!: any;
-totalSale!:number;
-totalPrice!:any;
-  sale:Sales =new Sales(0,"","",0);
-  medicineForConstructor = new Medicine( 0,"aishManisha","This is vicks","Viral", 16.34,new Date("1990-01-01"),new Date("2024-01-01"),70,0);
-  Customer: User = new User(0,"","",0,"",this.medicineForConstructor, new Date("Fri Dec 08 2019 "));
-  medicine!: any;
-  medicineName!:string;
-  price!:number;
+  formHeader ="Edit Customer details";
+  bCus: boolean = true;
+  bMed: boolean = false;
+  sales!: any;
+  totalPrice!:number;
 
+Sale:Sales= new Sales(0,"",0,0,new Date("2023-09-08"));
 
-  constructor(private service:SalesService,private customerService:CustomerService,private medicineService:MedicineService){}
-
-
+constructor(public saleService:SalesService) { }
+saleId!:number;
+medicineName!:string;
+medicineQunatity!:number;
+ price!:number;
+ date!:Date;
+bill!:number
+showbill=false;
+showForm= false;
+ showBill=false;
+ showFormMed=false;
+  searchForm!: FormGroup;
+ customers!: Sales[];
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      date: new FormControl('')
+    });
+    this.display();
+    this.display();
+  }
+
+  search(date:Date) {
    
-    this.displayMedicine();
-    this.display();
-    this.display();
-    
+    this.sales = this.saleService.getSaleByDate(date).subscribe((data) => this.sales = data);
+    return this.sales;
   }
 
   display(){
-    this.customers = this.customerService.getCustomers().subscribe((data) => this.customers = data);
-     return this.customers;
+    this.sales = this.saleService.getSale().subscribe((data) => this.sales = data);
+     return this.sales;
+  }
+
+
+
+
+
+
+public addSale = async () => {
+  let resp = await this.saleService.postSale(this.Sale);
+  resp.subscribe((data) => (this.sales = data));
+
+}
+
+calculateBill(item:Sales){
+  this.showbill=true;
+this.bill=item.medicineQunatity*item.price;
+
+}
+
+
+
+  openBill(){
+    this.showBill=true;
+  }
+  closeBill(){
+    this.showBill=false;
+  }
+  openForm(item:Sales){
+    this.showForm=true;
+  this.saleId=item.saleId,
+  this.medicineName=item.medicineName,
+this.medicineQunatity=item.medicineQunatity,
+this.price=item.price,
+this.date=item.date,
+     this.formHeader = "Edit Customer"
+  }
+  closeForm(){
+    this.showForm=false;
+    this.clearForm();
+  }
+  clearForm(){
+    this.saleId=0;
+    this.medicineName="";
+    this.medicineQunatity=0;
+    this.price=0;
+   }
+  saveSale(){
+    this.showForm =false;
+  
+    let  body = {
      
-  }
- displayMedicine(){
-  this.medicine = this.medicineService.getMedicine().subscribe((data) => this.medicine = data);
-  return this.medicine;
- }
-  displayCost(){
-    this.totalPrice = this.customerService.getCost().subscribe((data) => this.totalPrice = data);
-     return this.totalPrice;
-  }
-  // displaySales(){
-  //   this.sales=this.service.getSales().subscribe(data=>
-  //     this.sales=data);
-  //     return this.sales;
-  // }
+  saleId: this.saleId,
+  
+medicineName:this.medicineName,
+medicineQunatity:this.medicineQunatity,
+price:this.price,
+date:this.date
 
-
-  // public calculateCost = async () =>{
-
-  //   let resp = await this.customerService.postCost(this.customers);
-  //    resp.subscribe((data) => (this.customers = data));
-  //    alert(resp.toString());
-
-  //  }
-
-
-  deleteRecord(id:number){
-    this.customerService.deleteData(id).subscribe(
-      (resp)=>{
-        console.log(resp);
-      }
+   }
+   if(this.saleId){
+    body['saleId'] =this.saleId;
+    this.saleService.updateSale(body).subscribe(
+      (res)=>{
+        this.sales()
+      },
     )
+  }else
+  this.saleService.postSale(body).subscribe(
+        (res)=>{
+          this.sales()
+        },
+      )
+    
+    this.ngOnInit();
+    this.ngOnInit();
+  }
+ 
+  closeFormMed(){
+    this.showFormMed=false;
+  } 
+ 
+
+
+  deleteData(item:Sales) {
+    this.saleService.deleteSale(item.saleId).subscribe((resp) => {
+      console.log(resp);
+    });
+    this.display();
     this.display();
   }
 
-  // addSales(){
-  //   let resp = this.service.postMethod(this.sale);
-  //   resp.subscribe((data) => (this.sales = data));
 
-  //   this.displaySales();
-  //   this.displaySales();
-  // }
-
-  // updateSales(user: Sales) {
-  //   this.service.updateData(user).subscribe((data) => {
-  //     console.log(data);
-  //   });
-  // }
 }
