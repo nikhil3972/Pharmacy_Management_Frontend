@@ -15,9 +15,9 @@
                 <div class="form-group">
                   <label for="customerId"><span class="req">* </span> SaleId:</label>
                   <input formControlName="saleId" required type="number" [(ngModel)]="Sale.saleId" name="saleId" id="saleId"
-                    [ngClass]="{'is-invalid': submitted && saleForm.controls.saleId.errors}"
+                    [ngClass]="{'is-invalid':submitted && saleForm.controls.saleId.errors}"
                     class="form-control phone" maxlength="28" placeholder="Enter your saleId..." />
-                  <div class="invalid-feedback" *ngIf="saleForm.get('saleId').invalid && saleForm.get('saleId').touched">
+                  <div class="invalid-feedback" *ngIf="submitted && saleForm.controls.saleId.errors?.required">
                     SaleId is required.
                   </div>
                 </div>
@@ -26,9 +26,9 @@
                   <label for="medicineName"><span class="req">* </span> Medicine Name:</label>
                   <input formControlName="medicineName" required type="text" [(ngModel)]="Sale.medicineName" name="medicineName"
                     id="medicineName"
-                    [ngClass]="{'is-invalid': saleForm.get('medicineName').invalid && saleForm.get('medicineName').touched}"
+                    [ngClass]="{'is-invalid': submitted && saleForm.controls.medicineName.errors}"
                     class="form-control phone" maxlength="28" placeholder="Enter your MedicineName..." />
-                  <div class="invalid-feedback" *ngIf="saleForm.get('medicineName').invalid && saleForm.get('medicineName').touched">
+                  <div class="invalid-feedback" *ngIf="submitted && saleForm.controls.medicineName.errors?.required">
                     Medicine Name is required.
                   </div>
                 </div>
@@ -37,10 +37,10 @@
                   <label for="contact"><span class="req">* </span>Quantity:</label>
                   <input formControlName="medicineQuantity" required type="number" [(ngModel)]="Sale.medicineQuantity"
                     name="medicineQuantity" id="medicineQuantity"
-                    [ngClass]="{'is-invalid': saleForm.get('medicineQuantity').invalid && saleForm.get('medicineQuantity').touched}"
+                    [ngClass]="{'is-invalid': submitted && saleForm.controls.medicineQuantity.errors}"
                     class="form-control phone" maxlength="28" placeholder="Enter quantity.." />
                   <div class="invalid-feedback"
-                    *ngIf="saleForm.get('medicineQuantity').invalid && saleForm.get('medicineQuantity').touched">
+                    *ngIf="submitted && saleForm.controls.medicineQuantity.errors?.required">
                     Quantity is required.
                   </div>
                 </div>
@@ -48,9 +48,9 @@
                 <div class="form-group">
                   <label for="contact"><span class="req">* </span>Price:</label>
                   <input formControlName="price" required type="number" [(ngModel)]="Sale.price" name="price" id="price"
-                    [ngClass]="{'is-invalid': saleForm.get('price').invalid && saleForm.get('price').touched}"
+                    [ngClass]="{'is-invalid': submitted && saleForm.controls.price.errors}"
                     class="form-control phone" maxlength="28" placeholder="Enter Price.." />
-                  <div class="invalid-feedback" *ngIf="saleForm.get('price').invalid && saleForm.get('price').touched">
+                  <div class="invalid-feedback" *ngIf="submitted && saleForm.controls.price.errors?.required">
                     Price is required.
                   </div>
                 </div>
@@ -58,9 +58,9 @@
                 <div class="form-group">
                   <label for="date"><span class="req">* </span> Date:</label>
                   <input formControlName="date" required type="date" [(ngModel)]="Sale.date" name="date" id="date"
-                    [ngClass]="{'is-invalid': saleForm.get('date').invalid && saleForm.get('date').touched}"
+                    [ngClass]="{'is-invalid': submitted && saleForm.controls.date.errors}"
                     class="form-control phone" maxlength="28" placeholder="Enter Date.." />
-                  <div class="invalid-feedback" *ngIf="saleForm.get('date').invalid && saleForm.get('date').touched">
+                  <div class="invalid-feedback" *ngIf="submitted && saleForm.controls.date.errors?.required">
                     Date is required.
                   </div>
                 </div>

@@ -19,6 +19,7 @@ export class SalesComponent implements OnInit{
   sales!: any;
   totalPrice!:number;
   saleForm!: FormGroup;
+  submitted= false;
 
 Sale:Sales= new Sales(0,"",0,0,new Date("2023-09-08"));
 
@@ -49,7 +50,7 @@ showForm= false;
       price: ['', Validators.required],
       date: ['', Validators.required]
     });
-    
+
     this.display();
     this.display();
   }
@@ -71,8 +72,29 @@ showForm= false;
 
 
 public addSale = async () => {
-  let resp = await this.saleService.postSale(this.Sale);
+  
+
+  this.submitted=true;
+
+    
+  if (this.Sale.medicineQuantity <= 0) {
+    alert("Medicine Quantity cannot be negative or 0");
+    return;
+  } 
+  else if (this.Sale.saleId <= 0) {
+    alert("SaleId cannot be negative or 0");
+    return;
+  }
+  else if (this.Sale.price <= 0) {
+    alert("Price cannot be negative or 0");
+    return;
+  } 
+    else if (!this.saleForm.invalid) {
+      let resp = await this.saleService.postSale(this.Sale);
   resp.subscribe((data) => (this.sales = data));
+    } 
+    else
+      return;
 
 }
 
