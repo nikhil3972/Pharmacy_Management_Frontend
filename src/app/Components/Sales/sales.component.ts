@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Sales } from 'src/app/Model/Sales';
 
@@ -18,13 +18,14 @@ export class SalesComponent implements OnInit{
   bMed: boolean = false;
   sales!: any;
   totalPrice!:number;
+  saleForm!: FormGroup;
 
 Sale:Sales= new Sales(0,"",0,0,new Date("2023-09-08"));
 
-constructor(public saleService:SalesService) { }
+constructor(public saleService:SalesService, private formBuilder:FormBuilder) { }
 saleId!:number;
 medicineName!:string;
-medicineQunatity!:number;
+medicineQuantity!:number;
  price!:number;
  date!:Date;
 bill!:number
@@ -39,6 +40,16 @@ showForm= false;
     this.searchForm = new FormGroup({
       date: new FormControl('')
     });
+
+
+    this.saleForm = this.formBuilder.group({
+      saleId: ['', Validators.required],
+      medicineName: ['', Validators.required],
+      medicineQuantity: ['', Validators.required],
+      price: ['', Validators.required],
+      date: ['', Validators.required]
+    });
+    
     this.display();
     this.display();
   }
@@ -67,7 +78,7 @@ public addSale = async () => {
 
 calculateBill(item:Sales){
   this.showbill=true;
-this.bill=item.medicineQunatity*item.price;
+this.bill=item.medicineQuantity*item.price;
 
 }
 
@@ -83,7 +94,7 @@ this.bill=item.medicineQunatity*item.price;
     this.showForm=true;
   this.saleId=item.saleId,
   this.medicineName=item.medicineName,
-this.medicineQunatity=item.medicineQunatity,
+this.medicineQuantity=item.medicineQuantity,
 this.price=item.price,
 this.date=item.date,
      this.formHeader = "Edit Customer"
@@ -95,7 +106,7 @@ this.date=item.date,
   clearForm(){
     this.saleId=0;
     this.medicineName="";
-    this.medicineQunatity=0;
+    this.medicineQuantity=0;
     this.price=0;
    }
   saveSale(){
@@ -106,7 +117,7 @@ this.date=item.date,
   saleId: this.saleId,
   
 medicineName:this.medicineName,
-medicineQunatity:this.medicineQunatity,
+medicineQuantity:this.medicineQuantity,
 price:this.price,
 date:this.date
 

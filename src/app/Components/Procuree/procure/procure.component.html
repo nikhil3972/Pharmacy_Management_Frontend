@@ -10,33 +10,55 @@
           <fieldset>
 
 
+            <form [formGroup]="manufacturerForm" (ngSubmit)="addManufacturer()">
 
-            <div class="form-group">
-              <label for="Name"><span class="req">* </span> manufacturer  Name: </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.manufacturerName" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter manufacturer name..." />
-            </div>
-            <div class="form-group">
-              <label for="Name"><span class="req">* </span>medicine Name: </label>
-              <input required type="text" [(ngModel)]="ProcureMedicines.medicineName" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter medicine name.." />
-            </div>
-            <div class="form-group">
-              <label for="Name"><span class="req">* </span>Delivary Date: </label>
-              <input required type="date" [(ngModel)]="ProcureMedicines.delivaryDate" name="date" id="date"
-                class="form-control phone" maxlength="28" placeholder="Enter delivary date.." />
-            </div>
-            
 
-            <div class="form-group">
-              <label for="Name"><span class="req">* </span> Medicine Quantity </label>
-              <input required type="number" [(ngModel)]="ProcureMedicines.quantity" name="name" id="name"
-                class="form-control phone" maxlength="28" placeholder="Enter Medicine quantity.." />
-            </div>
-            <div class="form-group mt-3 text-center">
-              <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
-                (click)="addManufacturer()" />
-            </div>
+              <div class="form-group">
+                <label for="manufacturerName"><span class="req">* </span> Manufacturer  Name: </label>
+                <input formControlName="manufacturerName" required type="text" [(ngModel)]="ProcureMedicines.manufacturerName" name="name" id="name"
+                  [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.manufacturerName.errors}"
+                  class="form-control phone" maxlength="28" placeholder="Enter manufacturer name..." />
+                  <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.manufacturerName.errors?.required">
+                    Manufacturer Name is required.
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="medicineName"><span class="req">* </span>Medicine Name: </label>
+                <input formControlName="medicineName" required type="text" [(ngModel)]="ProcureMedicines.medicineName" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.medicineName.errors}"
+                  class="form-control phone" maxlength="28" placeholder="Enter medicine name.." />
+                  <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.medicineName.errors?.required">
+                    Medicine Name is required.
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="deliveryDate"><span class="req">* </span>Delivery Date: </label>
+                <input formControlName="deliveryDate" required type="date" [(ngModel)]="ProcureMedicines.delivaryDate" name="date" id="date"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.deliveryDate.errors}"
+                  class="form-control phone" maxlength="28" placeholder="Enter delivary date.." />
+                  <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.deliveryDate.errors?.required">
+                    Delivery Date is required.
+                  </div>  
+              </div>
+              
+
+              <div class="form-group">
+                <label for="medicineQuantity"><span class="req">* </span> Medicine Quantity </label>
+                <input formControlName="medicineQuantity" required type="number" [(ngModel)]="ProcureMedicines.quantity" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.medicineQuantity.errors}"
+                  class="form-control phone" maxlength="28" placeholder="Enter Medicine quantity.." />
+                  <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.medicineQuantity.errors?.required">
+                    Medicine Quantity is required.
+                  </div>
+              </div>
+              <div class="form-group mt-3 text-center">
+                <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
+                  (click)="addManufacturer()" />
+              </div>
+
+
+
+            </form>
           </fieldset>
         </form>
       </div>

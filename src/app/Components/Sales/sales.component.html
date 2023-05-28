@@ -10,46 +10,67 @@
           <form>
             <fieldset>
               <h4 class="text-center">Add Sales details</h4>
-              <div class="form-group">
-                <label for="customerId"><span class="req">* </span> saleId:
-                </label>
-                <input required type="number" [(ngModel)]="Sale.saleId" name="number" id="Id"
-                  class="form-control phone" maxlength="28" placeholder="Enter your saleId..." />
-              </div>
-              <div class="form-group">
-                <label for="medicineName"><span class="req">* </span> Medicine Name:
-                </label>
-                <input required type="text" [(ngModel)]="Sale.medicineName" name="name" id="medicineName"
-                  class="form-control phone" maxlength="28" placeholder="Enter your MedicineName..." />
-              </div>
+              <form [formGroup]="saleForm" (ngSubmit)="addSale()">
 
-             
-              <div class="form-group">
-                <label for="contact"><span class="req">* </span>Quantity:
-                </label>
-                <input required type="number" [(ngModel)]="Sale.medicineQunatity" name="quantity" id="quantity"
-                  class="form-control phone" maxlength="28" placeholder="Enter quantity.." />
-              </div>
-              <div class="form-group">
-                <label for="contact"><span class="req">* </span>Price:
-                </label>
-                <input required type="number" [(ngModel)]="Sale.price" name="price" id="price"
-                  class="form-control phone" maxlength="28" placeholder="Enter Price.." />
-              </div>
-              <div class="form-group">
-                  <label for="date"><span class="req">* </span> Date:
-                  </label>
-                  <input required type="date" [(ngModel)]="Sale.date" name="date" id="date"
-                    class="form-control phone" maxlength="28" placeholder="Enter Date.." />
+                <div class="form-group">
+                  <label for="customerId"><span class="req">* </span> SaleId:</label>
+                  <input formControlName="saleId" required type="number" [(ngModel)]="Sale.saleId" name="saleId" id="saleId"
+                    [ngClass]="{'is-invalid': submitted && saleForm.controls.saleId.errors}"
+                    class="form-control phone" maxlength="28" placeholder="Enter your saleId..." />
+                  <div class="invalid-feedback" *ngIf="saleForm.get('saleId').invalid && saleForm.get('saleId').touched">
+                    SaleId is required.
+                  </div>
                 </div>
-             
-           
-             
-            
-               <div class="form-group mt-3 text-center">
-                <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
-                  (click)="addSale()" />
-              </div>
+              
+                <div class="form-group">
+                  <label for="medicineName"><span class="req">* </span> Medicine Name:</label>
+                  <input formControlName="medicineName" required type="text" [(ngModel)]="Sale.medicineName" name="medicineName"
+                    id="medicineName"
+                    [ngClass]="{'is-invalid': saleForm.get('medicineName').invalid && saleForm.get('medicineName').touched}"
+                    class="form-control phone" maxlength="28" placeholder="Enter your MedicineName..." />
+                  <div class="invalid-feedback" *ngIf="saleForm.get('medicineName').invalid && saleForm.get('medicineName').touched">
+                    Medicine Name is required.
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="contact"><span class="req">* </span>Quantity:</label>
+                  <input formControlName="medicineQuantity" required type="number" [(ngModel)]="Sale.medicineQuantity"
+                    name="medicineQuantity" id="medicineQuantity"
+                    [ngClass]="{'is-invalid': saleForm.get('medicineQuantity').invalid && saleForm.get('medicineQuantity').touched}"
+                    class="form-control phone" maxlength="28" placeholder="Enter quantity.." />
+                  <div class="invalid-feedback"
+                    *ngIf="saleForm.get('medicineQuantity').invalid && saleForm.get('medicineQuantity').touched">
+                    Quantity is required.
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="contact"><span class="req">* </span>Price:</label>
+                  <input formControlName="price" required type="number" [(ngModel)]="Sale.price" name="price" id="price"
+                    [ngClass]="{'is-invalid': saleForm.get('price').invalid && saleForm.get('price').touched}"
+                    class="form-control phone" maxlength="28" placeholder="Enter Price.." />
+                  <div class="invalid-feedback" *ngIf="saleForm.get('price').invalid && saleForm.get('price').touched">
+                    Price is required.
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="date"><span class="req">* </span> Date:</label>
+                  <input formControlName="date" required type="date" [(ngModel)]="Sale.date" name="date" id="date"
+                    [ngClass]="{'is-invalid': saleForm.get('date').invalid && saleForm.get('date').touched}"
+                    class="form-control phone" maxlength="28" placeholder="Enter Date.." />
+                  <div class="invalid-feedback" *ngIf="saleForm.get('date').invalid && saleForm.get('date').touched">
+                    Date is required.
+                  </div>
+                </div>
+              
+                <div class="form-group mt-3 text-center">
+                  <input class="btn btn-success" type="submit" name="submit_reg" value="Register" [disabled]="saleForm.invalid" />
+                </div>
+              
+              </form>
+              
             </fieldset>
           </form>
           <script src="http://code.amgularjs.org/1.2.3/angular.min.js"></script>
@@ -129,7 +150,7 @@
       </div>
    <div class="group">
           <label for="medicine_mfg">Quantity</label>
-          <input type="number" class="form-control" [(ngModel)]="medicineQunatity" name="quantity" required min="1">
+          <input type="number" class="form-control" [(ngModel)]="medicineQuantity" name="quantity" required min="1">
       </div>
         <div class="group">
           <label for="medicine_mfg">Price</label>

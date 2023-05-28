@@ -1,15 +1,15 @@
 export class Sales{
     saleId! : number
     medicineName! : string
-    medicineQunatity! : number
+    medicineQuantity! : number
     
     price!:number
     date!:Date
 
-    constructor(id:number,medicineName:string,medicineQunatity:number,price:number,date:Date){
+    constructor(id:number,medicineName:string,medicineQuantity:number,price:number,date:Date){
         this.saleId=id
         this.medicineName=medicineName
-       this.medicineQunatity=medicineQunatity
+       this.medicineQuantity=medicineQuantity
        this.price=price
         this.date=date
        
