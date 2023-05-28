@@ -81,6 +81,10 @@ public addSale = async () => {
     alert("Medicine Quantity cannot be negative or 0");
     return;
   } 
+  else if(this.Sale.medicineName.trim() === ''){
+    alert("Medicine Name cannnot be blank");
+    return;
+  }
   else if (this.Sale.saleId <= 0) {
     alert("SaleId cannot be negative or 0");
     return;

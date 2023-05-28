@@ -45,6 +45,14 @@ export class ProcureComponent {
       alert("Medicine Quantity cannot be 0");
       return;
     }
+    else if(this.ProcureMedicines.manufacturerName.trim()===''){
+      alert("Manufacturer Name cannnot be blank");
+    return;
+    }
+    else if(this.ProcureMedicines.medicineName.trim()===''){
+      alert("Medicine Name cannnot be blank");
+    return;
+    }
     else if (!this.manufacturerForm.invalid) {
       let resp = await this.procureService.postMethod(this.ProcureMedicines);
       resp.subscribe((data) => {
