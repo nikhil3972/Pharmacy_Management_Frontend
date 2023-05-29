@@ -156,22 +156,28 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Manufacturer Name</th>
-          <th>Medicine Name</th>
-          <th>Manufacturer Date</th>
-          <th>Quantity</th>
-          <th>Action</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Dosage</th>
+            <th>Price</th>
+            <th>Manufacture Date</th>
+            <th>Expiry Date</th>
+            <th>Stock</th>
+            <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of procuremedicine; let i = index">
-          <td>{{ item.id }}</td>
-          <td>{{ item.manufacturerName}}</td>
-          <td>{{ item.medicineName }}</td>
-          <td>{{ item.delivaryDate }}</td>
-          <td>{{item.quantity}}</td>
+        <tr *ngFor="let item of procureArr; let i = index">
+          <td>{{ item.medicineId }}</td>
+            <td>{{ item.medicineName }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.dosage }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.manufactureDate }}</td>
+            <td>{{ item.expiryDate }}</td>
+            <td>{{ item.currentStock }}</td>
           <td>
-            <button class="btn btn-danger" (click)="deleteData(item)">
+            <button class="btn btn-danger" (click)="deleteMedicine(item.medicineId)">
               Delete
             </button>
           </td>
