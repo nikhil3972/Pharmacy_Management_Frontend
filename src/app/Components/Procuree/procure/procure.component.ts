@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { Seller } from 'src/app/Model/Seller';
+import { Component,OnInit } from '@angular/core';
 import { ProcureService } from 'src/app/Services/Procure/procure.service';
-import { ProcureMedicine } from 'src/app/Model/ProcureMedicine';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Procure } from 'src/app/Model/Procure';
+
 
 @Component({
   selector: 'app-procure',
@@ -15,63 +15,120 @@ export class ProcureComponent {
 
   submitted=false;
 
-  manufacturers!:any;
-  procuremedicine!:any;
-  ProcureMedicines:ProcureMedicine = new ProcureMedicine("","",new Date("Fri Dec 08 2019 "),0);
+  procureArr : Procure[] = [];
+
+  procure:Procure= new Procure(0,"","","",0,new Date("2023-09-08"),new Date("2023-09-08"),0);
+
+  medicineId!:number;
+  medicineName!:string;
+  description!:string;
+  dosage!:string;
+  price!:number;
+  manufactureDate!:Date;
+  expiryDate!:Date;
+  currentStock!:number
+
   constructor(private procureService:ProcureService, private formBuilder:FormBuilder){}
   ngOnInit(){
 
     //Validations
 
     this.manufacturerForm= this.formBuilder.group({
-      manufacturerName:['',Validators.required],
+      medicineId:['',Validators.required],
       medicineName:['',Validators.required],
-      deliveryDate:['',Validators.required],
-      medicineQuantity:['',Validators.required]
+      description:['',Validators.required],
+      dosage:['',Validators.required],
+      price:['',Validators.required],
+      manufactureDate:['',Validators.required],
+      expiryDate:['',Validators.required],
+      currentStock:['',Validators.required]
     })
     
-    this.displayManufacturers();
+    this.display();
   }
-  displayManufacturers(){
-    this.procuremedicine=this.procureService.getSellers().subscribe(data=>
-      this.procuremedicine=data);
-      return this.procuremedicine;
+  display(){
+    this.procureService.getMedicine().subscribe(
+      (res : any) => {
+        this.procureArr = res;
+      },
+      (err) => {
+
+      }
+    );
   }
-  public addManufacturer = async () => {
+  deleteMedicine(medicineId : number){
+    this.procureService.deleteMedicine(medicineId).subscribe(
+      (resp : any) => {
+        this.display();
+      },
+      (err : any) => {
+        console.log(err);
+      }
+    );
+    location.reload();
+  }
+
+  addMedicine(){
+
     this.submitted=true;
 
     
-    if(this.ProcureMedicines.quantity === 0){
-      alert("Medicine Quantity cannot be 0");
-      return;
-    }
-    else if(this.ProcureMedicines.manufacturerName.trim()===''){
-      alert("Manufacturer Name cannnot be blank");
+  if (this.procure.medicineId <= 0) {
+    alert("Medicine Id cannot be negative or 0");
     return;
-    }
-    else if(this.ProcureMedicines.medicineName.trim()===''){
-      alert("Medicine Name cannnot be blank");
+  } 
+  else if(this.procure.medicineName.trim() === ''){
+    alert("Medicine Name cannnot be blank");
     return;
-    }
-    else if (!this.manufacturerForm.invalid) {
-      let resp = await this.procureService.postMethod(this.ProcureMedicines);
-      resp.subscribe((data) => {
-        this.procuremedicine = data;});
+  }
+  else if (this.procure.description.trim() ==='') {
+    alert("Description cannot be blank");
+    return;
+  }
+  else if (this.procure.dosage.trim() ==='') {
+    alert("Dosage cannot be blank");
+    return;
+  } 
+  else if (this.procure.price <= 0) {
+    alert("CurrentStock cannot be negative or 0");
+    return;
+  }
+  else if (this.procure.currentStock <= 0) {
+    alert("Medicine Id cannot be negative or 0");
+    return;
+  }
+  else if (!this.manufacturerForm.invalid) {
+    this.procureService.postMedicine(this.medicineId,
+      this.medicineName,
+      this.description,
+      this.dosage,
+      this.price,
+      this.manufactureDate,
+      this.expiryDate,
+      this.currentStock).subscribe(
+      (resp : any) => {
+        alert("Medicine Added Successfully");
+      },
+      (err) => {
+        console.log(err);
+      });
+    location.reload();
     } 
     else
       return;
-  };
-  deleteData(item: Seller) {
-    this.procureService.deleteData(item.id).subscribe((resp) => {
-      console.log(resp);
-    });
-    this.displayManufacturers();
-    this.displayManufacturers();
+
   }
-  updateManufacturer(user: ProcureMedicine) {
-    this.procureService.updateData(user).subscribe((data) => {
-      console.log(data);
-    });
+
+  searchMedicine(medicineName : String){
+    this.procureService.getMedicineName(medicineName).subscribe(
+      (resp : any) => {
+        this.display();
+      },
+      (err : any) => {
+        console.log(err);
+      }
+    );
+    location.reload();
   }
   
 }

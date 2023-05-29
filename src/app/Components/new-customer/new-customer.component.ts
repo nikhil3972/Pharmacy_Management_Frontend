@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NewCustomer } from 'src/app/Model/NewCustomer';
 import { NewCustomerService } from 'src/app/Services/NewCustomer/new-customer.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-new-customer',
@@ -14,10 +16,12 @@ export class NewCustomerComponent {
   bMed: boolean = false;
   customers!: any;
   totalPrice!:number;
+  customerForm!: FormGroup;
+  submitted= false;
 
 Customer:NewCustomer= new NewCustomer(0,"","",new Date("Fri Dec 08 2019 "),0,"",0,0);
 
-constructor(public customerService:NewCustomerService) { }
+constructor(public customerService:NewCustomerService, private formBuilder:FormBuilder) { }
 customerId!:number;
 customerName!:string;
 contact!:string;
@@ -33,26 +37,63 @@ quantity!:number;
  showFormMed=false;
 
   ngOnInit() {
+    this.customerForm= this.formBuilder.group({
+      customerId:['',Validators.required],
+      customerName:['',Validators.required],
+      contact:['',Validators.required],
+      buyingDate:['',Validators.required],
+      medicineId:['',Validators.required],
+      medicineName:['',Validators.required],
+      price:['',Validators.required],
+      quantity:['',Validators.required]
+    })
+
     this.display();
     this.display();
   }
-
- 
 
   display(){
     this.customers = this.customerService.getCustomer().subscribe((data) => this.customers = data);
      return this.customers;
   }
 
-
-
-
-
-
 public addCustomer = async () => {
-  let resp = await this.customerService.postCustomer(this.Customer);
-  resp.subscribe((data) => (this.customers = data));
-
+  this.submitted=true;
+  if (this.Customer.customerId <= 0) {
+    alert("Customer Id cannot be negative or 0");
+    return;
+  }
+  else if(this.Customer.customerName.trim() === ''){
+    alert("Customer Name cannnot be blank");
+    return;
+  }
+  else if (this.Customer.contact.trim()==='') {
+    alert("Contact cannot be blank");
+    return;
+  }
+  else if (this.Customer.price <= 0) {
+    alert("Price cannot be negative or 0");
+    return;
+  }
+  else if (this.Customer.quantity <= 0) {
+    alert("Quantity cannot be negative or 0");
+    return;
+  }
+  else if (this.Customer.medicineId <= 0) {
+    alert("Medicine Id cannot be negative or 0");
+    return;
+  }
+  else if(this.Customer.medicineName.trim() === ''){
+    alert("Medicine Name cannnot be blank");
+    return;
+  }
+  else if (!this.customerForm.invalid) {
+    let resp = await this.customerService.postCustomer(this.Customer);
+    resp.subscribe((data: any) => (this.customers = data));
+  }
+  else{
+    return;
+  }
 
 }
 

@@ -95,7 +95,7 @@ public addSale = async () => {
   } 
     else if (!this.saleForm.invalid) {
       let resp = await this.saleService.postSale(this.Sale);
-  resp.subscribe((data) => (this.sales = data));
+  resp.subscribe((data: any) => (this.sales = data));
     } 
     else
       return;

@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Medicine } from 'src/app/Model/Medicine';
 import { MedicineService } from 'src/app/Services/Medicine/medicine.service';
+import { ProcureService } from 'src/app/Services/Procure/procure.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,7 @@ export class DashboardComponent {
   displayedColumns: string[] = ['id', 'name', 'desc', 'dosage','price','manufactureDate','expiryDate','currentStock','Action'];
   dataSource :any;
   formHeader ="Add Medicine";
-  id!:number;
+  medicineId!:number;
     medicineName!:string;
     description!:string;
     dosage!:string;
@@ -24,15 +25,13 @@ export class DashboardComponent {
     manufactureDate!:Date;
     expiryDate!:Date;
     currentStock!:number;
-    customerId!:number;
-    medicineId!:number;
   showForm= false;
 
   @ViewChild(MatPaginator)paginator!:MatPaginator;
   @ViewChild(MatSort) sort!:MatSort;
 
 
-  constructor(private medicineService : MedicineService){}
+  constructor(private medicineService : MedicineService, private procureSer : ProcureService){}
 
   ngOnInit(){
       this.getData();
@@ -40,7 +39,7 @@ export class DashboardComponent {
       // return this.medicine;
   }
   getData(){
-    this.medicineService.getMedicine().subscribe(data =>{
+    this.procureSer.getMedicine().subscribe(data =>{
       this.medicine = data;
 
       this.dataSource=new MatTableDataSource<Medicine>(this.medicine);
@@ -69,7 +68,7 @@ export class DashboardComponent {
       this.manufactureDate=item.manufactureDate,
       this.expiryDate=item.expiryDate,
       this.currentStock=item.currentStock,
-      this.id =item.id;
+      this.medicineId =item.id;
       this.formHeader = "Edit Medicine"
   }
 
@@ -89,7 +88,6 @@ export class DashboardComponent {
   saveMedicine(){
     this.showForm =false;
     let  body = {
-      medicineId:this.medicineId,
       medicineName:this.medicineName,
       description:this.description,
       price:this.price,
@@ -97,31 +95,22 @@ export class DashboardComponent {
       manufactureDate:this.manufactureDate,
       expiryDate:this.expiryDate,
       currentStock:this.currentStock,
-     customerId:this.customerId
+      id:this.medicineId
     }
-    this.medicineService.postMedicine(body).subscribe(
-          (res)=>{
-            this.medicine()
-          },
-        )
-
-    // if(this.id){
-    //   body['id'] =this.id;
-    //   this.medicineService.putMedicine(body).subscribe(
-    //     (res)=>{
-    //       this.medicine()
-    //     },
-    //   )
-    // }else{
-
-    //   this.medicineService.postMedicine(body).subscribe(
-    //     (res)=>{
-    //       this.medicine()
-    //     },
-    //   )
-    // }
-
-
+    if(this.medicineId){
+      body['id'] =this.medicineId;
+      this.medicineService.putMedicine(body).subscribe(
+        ()=>{
+          this.medicine()
+        },
+      )
+    }else{
+      this.medicineService.postMedicine(body).subscribe(
+        ()=>{
+          this.medicine()
+        },
+      )
+    }
     this.ngOnInit();
     this.ngOnInit();
     this.ngOnInit();

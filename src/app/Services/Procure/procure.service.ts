@@ -1,26 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProcureMedicine } from 'src/app/Model/ProcureMedicine';
-import { Seller } from 'src/app/Model/Seller';
+import { Procure } from 'src/app/Model/Procure';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProcureService {
 
-  constructor(private http:HttpClient) { }
-  public getSellers(){
-    return this.http.get("http://localhost:8999/procure/getAllManufacturer");
-  }
-  public postMethod(manufacturer: ProcureMedicine){
-    return this.http.post("http://localhost:8999/procure/insertManufacturer",manufacturer,{responseType:'text'as 'json'});
-  }
-  public deleteData(id:number){
+  Procure : Procure | undefined;
 
-    return this.http.delete("http://localhost:8999/procure/deleteManufacturer/"+id);
+  constructor(private http:HttpClient) { }
+
+  public getMedicine(){
+    return this.http.get("http://localhost:8999/procure/getMedicines");
   }
-  public updateData(manufacturer:ProcureMedicine){
-    alert("update");
-    return this.http.put("localhost:8999/procure/updateManufacturer",manufacturer);
+
+  public postMedicine(   medicineId:number,
+    medicineName:string,
+    description:string,
+    dosage:string,
+    price:number,
+    manufactureDate:Date,
+    expiryDate:Date,
+    currentStock:number){
+
+      this.Procure = new Procure(medicineId, medicineName, description, dosage, price, manufactureDate, expiryDate, currentStock)
+    return this.http.post("http://localhost:8999/procure/addMedicine", this.Procure);
+  }
+  public deleteMedicine(id:number){
+    return this.http.delete("http://localhost:8999/procure/delete/"+id);
+  }
+  public putMedicine(body: any){
+    return this.http.put("http://localhost:8999/procure/updateMedicine",body)
+  }
+
+  public getMedicineSorted(){
+    return this.http.get("http://localhost:8999/getAllMedicineSorted");
+  }
+
+  public getMedicineName(name : String){
+    return this.http.get("http://localhost:8999/procure/getMedicineName/" + name);
   }
 }

@@ -10,10 +10,10 @@
           <fieldset>
 
 
-            <form [formGroup]="manufacturerForm" (ngSubmit)="addManufacturer()">
+            <form [formGroup]="manufacturerForm" (ngSubmit)="addMedicine()">
 
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="manufacturerName"><span class="req">* </span> Manufacturer  Name: </label>
                 <input formControlName="manufacturerName" required type="text" [(ngModel)]="ProcureMedicines.manufacturerName" name="name" id="name"
                   [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.manufacturerName.errors}"
@@ -54,6 +54,86 @@
               <div class="form-group mt-3 text-center">
                 <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
                   (click)="addManufacturer()" />
+              </div> -->
+
+              <div class="form-group">
+                <label for="Name"><span class="req">* </span> Medicine Id </label>
+                <input formControlName="medicineId" required type="number" [(ngModel)]="medicineId" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.medicineId.errors}" 
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine Id.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.medicineId.errors?.required">
+                  Medicine Id field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Name"><span class="req">* </span>Medicine Name: </label>
+                <input formControlName="medicineName" required type="text" [(ngModel)]="medicineName" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.medicineName.errors}"  
+                class="form-control phone" maxlength="28" placeholder="Enter Medicine Name.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.medicineName.errors?.required">
+                  Medicine Name field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description"><span class="req">* </span>Description: </label>
+                <input formControlName="description" required type="text" [(ngModel)]="description" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.description.errors}"  
+                class="form-control phone" maxlength="28" placeholder="Enter description.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.description.errors?.required">
+                  Description field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dosage"><span class="req">* </span>Dosage: </label>
+                <input formControlName="dosage" required type="text" [(ngModel)]="dosage" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.dosage.errors}"   
+                class="form-control phone" maxlength="28" placeholder="Enter dosage.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.dosage.errors?.required">
+                  Dosage field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="medicineQuantity"><span class="req">* </span> Medicine Quantity </label>
+                <input formControlName="medicineQuantity" required type="number" [(ngModel)]="price" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.medicineQuantity.errors}"  
+                class="form-control phone" maxlength="28" placeholder="Enter Quantity.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.medicineQuantity.errors?.required">
+                  Medicine Quantity field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="deliveryDate"><span class="req">* </span>Delivary Date: </label>
+                <input formControlName="deliveryDate" required type="date" [(ngModel)]="manufactureDate" name="date" id="date"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.deliveryDate.errors}"  
+                class="form-control phone" maxlength="28" placeholder="Enter Manufacture date.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.deliveryDate.errors?.required">
+                  Delivery Date field is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="expiryDate"><span class="req">* </span>Expiry Date: </label>
+                <input formControlName="expiryDate" required type="date" [(ngModel)]="expiryDate" name="date" id="date"
+                  
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.expiryDate.errors}"  
+                class="form-control phone" maxlength="28" placeholder="Enter Expiry date.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.expiryDate.errors?.required">
+                  Expiry Date field is required.
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="stock"><span class="req">* </span> Stock </label>
+                <input formControlName="stock" required type="number" [(ngModel)]="currentStock" name="name" id="name"
+                [ngClass]="{'is-invalid':submitted && manufacturerForm.controls.stock.errors}"  
+                  
+                class="form-control phone" maxlength="28" placeholder="Enter Stock.." />
+                <div class="invalid-feedback" *ngIf="submitted && manufacturerForm.controls.stock.errors?.required">
+                  Stock field is required.
+                </div>
+              </div>
+              <div class="form-group mt-3 text-center">
+                <input class="btn btn-success" type="submit" name="submit_reg" value="Register"
+                  (click)="addMedicine()" />
               </div>
 
 
